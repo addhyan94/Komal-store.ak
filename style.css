@@ -1,0 +1,289 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #f5f7fa;
+}
+
+/* Top Bar */
+.top-bar {
+  background: #0c8a8f;
+  color: white;
+  text-align: center;
+  padding: 8px;
+  font-size: 14px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background: white;
+}
+
+.logo h2 {
+  font-size: 20px;
+}
+
+.logo span {
+  font-size: 12px;
+  color: gray;
+}
+
+.search {
+  display: flex;
+  width: 40%;
+}
+
+.search input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.search button {
+  padding: 10px 15px;
+  background: #0c8a8f;
+  color: white;
+  border: none;
+}
+
+.actions {
+  display: flex;
+  gap: 20px;
+}
+
+/* Navbar */
+.navbar {
+  background: #0c8a8f;
+  color: white;
+  padding: 10px 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 5%;
+  background: white;
+  align-items: center;
+}
+
+.hero-left h1 {
+  font-size: 42px;
+}
+
+.hero-left p {
+  margin: 15px 0;
+}
+
+.hero-left button {
+  padding: 12px 25px;
+  background: #0c8a8f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-left button:hover {
+  background: #066b6f;
+}
+
+.hero-right img {
+  width: 300px;
+}
+
+/* Features */
+.features {
+  display: flex;
+  justify-content: space-around;
+  background: white;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+/* Categories */
+.categories {
+  padding: 40px 5%;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.cat-card {
+  background: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.cat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.cat-card img {
+  width: 80px;
+}
+
+/* Products */
+.products {
+  padding: 40px 5%;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.product {
+  background: white;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  transition: 0.3s;
+  position: relative;
+}
+
+.product img {
+  width: 120px;
+  transition: 0.3s;
+}
+
+.product h4 {
+  margin-top: 10px;
+}
+
+.product p {
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+/* Hover Effects */
+.product:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.product:hover img {
+  transform: scale(1.1);
+}
+
+.product button {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.3s;
+}
+
+.product:hover button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product button {
+  background: #0c8a8f;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  background: #222;
+  color: white;
+  padding: 40px 5%;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .search {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Cart Panel */
+.cart-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 320px;
+  height: 100%;
+  background: white;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.cart-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.cart-item h4 {
+  font-size: 14px;
+}
+
+.qty-btn {
+  padding: 4px 8px;
+  margin: 5px;
+  cursor: pointer;
+  background: #0c8a8f;
+  color: white;
+  border: none;
+}
