@@ -6,7 +6,7 @@
 }
 
 body {
-  background: #f5f7fa;
+  background: #e8edf4;
 }
 
 /* Top Bar */
@@ -18,13 +18,47 @@ body {
   font-size: 14px;
 }
 
+.top-slide-main-box {
+  display: flex;
+  overflow-x: auto;
+}
+
+.top-slide-main-box::-webkit-scrollbar {
+  display: none;
+}
+
+.main-slide-div-box-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: slide-right-ani 15s infinite linear;
+  padding-right: 1em;
+
+}
+
+.main-slide-text-show {
+  flex: 0 0 31em;
+  padding: 1em 0;
+
+}
+
+@keyframes slide-right-ani {
+  from {
+    translate: 0;
+  }
+
+  to {
+    translate: -100%;
+  }
+}
+
 /* Header */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 5%;
-  background: white;
+  background: #e8edf4;
 }
 
 .logo h2 {
@@ -33,7 +67,7 @@ body {
 
 .logo span {
   font-size: 12px;
-  color: gray;
+  color: rgb(82, 78, 78);
 }
 
 .search {
@@ -129,6 +163,7 @@ body {
 }
 
 .cat-card {
+  margin-top: .5rem;
   background: white;
   padding: 20px;
   text-align: center;
@@ -139,11 +174,13 @@ body {
 
 .cat-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .cat-card img {
-  width: 80px;
+  width: 122px;
+  border-radius: 20px;
+  /* width: 80px; */
 }
 
 /* Products */
@@ -158,6 +195,7 @@ body {
 }
 
 .product {
+  margin-top: .5rem;
   background: white;
   padding: 15px;
   text-align: center;
@@ -183,7 +221,7 @@ body {
 /* Hover Effects */
 .product:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .product:hover img {
@@ -265,7 +303,7 @@ footer {
   width: 320px;
   height: 100%;
   background: white;
-  box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
   padding: 20px;
   overflow-y: auto;
 }
@@ -286,4 +324,21 @@ footer {
   background: #0c8a8f;
   color: white;
   border: none;
+}
+.cart-panel {
+  position: fixed;
+  right: -350px;
+  top: 0;
+  width: 320px;
+  height: 100%;
+  background: white;
+  transition: 0.3s;
+}
+
+.cart-panel.active {
+  right: 0;
+}
+
+html{
+  scroll-behavior: smooth;
 }
