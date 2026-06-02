@@ -1,3 +1,5 @@
+// Main Js file 
+
 /* ----------------Add new products and edit  ---------------- */
 
 const data = [
@@ -65,7 +67,6 @@ function renderProducts() {
 function addToCart(id) {
   const item = data.find(p => p.id === id);
   const existing = cart.find(p => p.id === id);
-
   if (existing) {
     existing.qty += 1;
   } else {
@@ -73,6 +74,7 @@ function addToCart(id) {
   }
 
   updateCart();
+  showToast("Item added to cart ✔");
 }
 
 /* ---------------- autoupdate cart ---------------- */
@@ -97,17 +99,50 @@ function renderCart() {
 
     cartItemsDiv.innerHTML += `
       <div class="cart-item">
-        <h4>${item.name}</h4>
-        <p>₹${item.price} x ${item.qty}</p>
+        <img src="${item.img}">
 
-        <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
-        <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+        <div class="cart-details">
+          <h4>${item.name}</h4>
+          <p>₹${item.price}</p>
+
+          <div class="qty-box">
+            <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
+            <span>${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+          </div>
+        </div>
       </div>
     `;
   });
 
   totalPriceEl.innerText = total;
 }
+// function renderCart() {
+//   cartItemsDiv.innerHTML = "";
+//   let total = 0;
+
+//   if (cart.length === 0) {
+//     cartItemsDiv.innerHTML = "<p>Your cart is empty</p>";
+//     totalPriceEl.innerText = 0;
+//     return;
+//   }
+
+//   cart.forEach(item => {
+//     total += item.price * item.qty;
+
+//     cartItemsDiv.innerHTML += `
+//       <div class="cart-item">
+//         <h4>${item.name}</h4>
+//         <p>₹${item.price} x ${item.qty}</p>
+
+//         <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
+//         <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+//       </div>
+//     `;
+//   });
+
+//   totalPriceEl.innerText = total;
+// }
 
 /* ---------------- add and discard cart products ---------------- */
 function changeQty(id, change) {
@@ -143,3 +178,220 @@ topshopbtnn.onclick = function () {
   });
 }
 
+/* ---------------- close cart kahi bhi click karne per  ----------------*/
+document.addEventListener("click", function (e) {
+  const cartPanel = document.getElementById("cartPanel");
+
+  if (cartPanel.classList.contains("active")) {
+
+
+    if (cartPanel.contains(e.target)) return;
+
+
+    if (e.target.closest("[onclick='toggleCart()']")) return;
+
+    cartPanel.classList.remove("active");
+  }
+});
+
+// document.addEventListener("click", function (e) {
+
+//   const cartPanel = document.getElementById("cartPanel");
+
+//   if (cartPanel.classList.contains("active")) {
+
+//    if (
+//   !cartPanel.contains(e.target) &&
+//   !e.target.closest("#cartPanel") &&
+//   !e.target.closest("[onclick='toggleCart()']")
+// ) {
+//       cartPanel.classList.remove("active");
+//     }
+//   }
+// });
+
+/* ----------------Close cart esc btn click karne per ----------------*/
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") {
+    document.getElementById("cartPanel").classList.remove("active");
+  }
+});
+/* ----------------Clear button in cart ----------------*/
+function clearCart() {
+  cart = [];
+  updateCart();
+}
+
+/* ---------------- CLEAN SEARCH SYSTEM ---------------- */
+
+const searchInput = document.getElementById("searchInput");
+const suggestionsBox = document.getElementById("suggestions");
+
+searchInput.addEventListener("input", function () {
+  const value = this.value.toLowerCase().trim();
+
+  if (!value) {
+    suggestionsBox.style.display = "none";
+    return;
+  }
+  const filtered = data
+    .filter(item => item.name.toLowerCase().includes(value))
+    .slice(0, 6); // max 6 items only
+
+  if (filtered.length === 0) {
+    suggestionsBox.innerHTML = `
+      <div style="color:gray;">No results found</div>
+    `;
+  } else {
+    suggestionsBox.innerHTML = filtered.map(item => `
+      <div onclick="selectProduct(${item.id})">
+        ${item.name}
+      </div>
+    `).join("");
+  }
+
+  suggestionsBox.style.display = "block";
+});
+
+/* click select */
+function selectProduct(id) {
+  const product = data.find(item => item.id === id);
+  searchInput.value = product.name;
+
+  container.innerHTML = `
+    <div class="product">
+      <img src="${product.img}">
+      <h4>${product.name}</h4>
+      <p>₹${product.price}</p>
+      <button onclick="addToCart(${product.id})">Add to Cart</button>
+    </div>
+  `;
+
+  suggestionsBox.style.display = "none";
+
+  document.querySelector(".products").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+/* ENTER search */
+searchInput.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    const value = this.value.toLowerCase();
+
+    const filtered = data.filter(item =>
+      item.name.toLowerCase().includes(value)
+    );
+
+    container.innerHTML = "";
+
+    if (filtered.length === 0) {
+      container.innerHTML = "<h3>No products found</h3>";
+    } else {
+      filtered.forEach(item => {
+        container.innerHTML += `
+          <div class="product">
+            <img src="${item.img}">
+            <h4>${item.name}</h4>
+            <p>₹${item.price}</p>
+            <button onclick="addToCart(${item.id})">Add to Cart</button>
+          </div>
+        `;
+      });
+    }
+
+    suggestionsBox.style.display = "none";
+    document.querySelector(".products").scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+});
+
+/* ---------------- ACCOUNT SYSTEM ---------------- */
+
+// check on page load
+window.addEventListener("load", function () {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const popup = document.getElementById("accountPopup");
+
+  if (!user && popup) {
+    popup.style.display = "flex";
+  }
+});
+
+// window.onload = function () {
+//   const user = JSON.parse(localStorage.getItem("user"));
+
+//   if (!user) {
+//     document.getElementById("accountPopup").style.display = "flex";
+//   }
+// };
+
+// save account
+function saveAccount() {
+  const errorBox = document.getElementById("formError");
+
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const phone2 = document.getElementById("phone2").value.trim();
+  const address = document.getElementById("address").value.trim();
+  const pincode = document.getElementById("pincode").value.trim();
+  const landmark = document.getElementById("landmark").value.trim();
+
+  errorBox.innerText = "";
+
+  if (!name || !phone || !address || !pincode || !landmark) {
+    errorBox.innerText = "All fields are required ❌";
+    return;
+  }
+
+  if (!/^[0-9]{10}$/.test(phone)) {
+    errorBox.innerText = "Phone must be exactly 10 digits ❌";
+    return;
+  }
+
+  if (phone2 && !/^[0-9]{10}$/.test(phone2)) {
+    errorBox.innerText = "Second phone must be 10 digits ❌";
+    return;
+  }
+
+  const user = { name, phone, phone2, address, pincode, landmark };
+
+  localStorage.setItem("user", JSON.stringify(user));
+
+  document.getElementById("accountPopup").style.display = "none";
+
+  showToast("Account created successfully ✅");
+}
+
+// function saveAccount() {
+//   const user = {
+//     name: document.getElementById("name").value,
+//     phone: document.getElementById("phone").value,
+//     phone2: document.getElementById("phone2").value,
+//     address: document.getElementById("address").value,
+//     pincode: document.getElementById("pincode").value,
+//     landmark: document.getElementById("landmark").value
+//   };
+
+//   localStorage.setItem("user", JSON.stringify(user));
+
+//   document.getElementById("accountPopup").style.display = "none";
+//  showToast("Account created successfully ✅");
+// }
+
+
+function showToast(msg) {
+  const toast = document.getElementById("toast");
+  toast.innerText = msg;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
+}
+
+function goToAccount() {
+  window.location.href = "account.html";
+}
