@@ -1,3 +1,4 @@
+<!-- Main Html file first.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,19 +28,24 @@
 
   <!-- Header -->
   <header class="header">
+    <div id="toast"></div>
+
     <div class="logo">
       <h3>Komal Journal Store</h3>
       <span>Rawarpura, Lalitpur (U.P)</span>
     </div>
-
+<!-- Sarch system ......................  -->
+ 
     <div class="search">
-      <input type="text" placeholder="Search for products...">
+      <input id="searchInput" type="text" placeholder="Search for products...">
+      <div id="suggestions" class="suggestions"></div>
       <button>🔍</button>
     </div>
 
     <div class="actions">
       <div>🚚 My Order</div>
-      <div>👤 Account</div>
+      <div onclick="goToAccount()">👤 Account</div>
+
       <!-- Cart Panel -->
       <div onclick="toggleCart()"><button>🛒 Cart</button></div>
       <div class="cart-panel" id="cartPanel">
@@ -48,6 +54,7 @@
         <div id="cartItems"></div>
 
         <h3>Total: ₹<span id="totalPrice">0</span></h3>
+        <button onclick="clearCart()" class="clear-btn">Clear Cart</button>
       </div>
   </header>
 
@@ -140,6 +147,22 @@
       </div>
     </div>
   </footer>
+
+  <!-- ACCOUNT POPUP -->
+<div id="accountPopup" class="account-popup">
+  <div class="account-box">
+    <h2>Create Account</h2>
+<div id="formError" class="form-error"></div>
+    <input type="text" id="name" placeholder="Full Name">
+    <input type="text" id="phone" placeholder="Phone Number">
+    <input type="text" id="phone2" placeholder="Second Phone (optional)">
+    <input type="text" id="address" placeholder="Address">
+    <input type="text" id="pincode" placeholder="Pincode">
+    <input type="text" id="landmark" placeholder="Landmark">
+
+    <button onclick="saveAccount()">Save Details</button>
+  </div>
+</div>
   <!-- day 2 add this line ......................................................... -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
   <!-- -------------------------------------------------------------------------------------- -->
