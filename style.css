@@ -1,8 +1,14 @@
+/* main css file  */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -14,7 +20,7 @@ body {
   background: #0c8a8f;
   color: white;
   text-align: center;
-  padding: 8px;
+  padding: 0px 5px;
   font-size: 14px;
 }
 
@@ -73,12 +79,22 @@ body {
 .search {
   display: flex;
   width: 40%;
+  border: .5px solid black;
+  /*overflow: hidden; */
+  position: relative;
+  /* border-radius: 30px; */
 }
 
 .search input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.search input:focus {
+  border: none
 }
 
 .search button {
@@ -86,6 +102,38 @@ body {
   background: #0c8a8f;
   color: white;
   border: none;
+}
+.suggestions {
+  position: absolute;
+  top: 100%;   /* नीचे आएगा */
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  z-index: 999;
+  display: none;
+
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+   max-height: 250px;
+  overflow-y: auto;
+}
+
+.suggestions div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions div:hover {
+  background: #f5f5f5;
+}
+
+/* icon circle */
+.suggestions div::before {
+  content: "🔍";
+  font-size: 12px;
+  opacity: 0.6;
 }
 
 .actions {
@@ -106,6 +154,7 @@ body {
   display: flex;
   gap: 20px;
   list-style: none;
+  padding-right: 29rem;
 }
 
 /* Hero */
@@ -325,6 +374,7 @@ footer {
   color: white;
   border: none;
 }
+
 .cart-panel {
   position: fixed;
   right: -350px;
@@ -339,6 +389,125 @@ footer {
   right: 0;
 }
 
-html{
-  scroll-behavior: smooth;
+/* Clear Button */
+.clear-btn {
+  width: 100%;
+  padding: 10px;
+  background: #0c8a8f;
+  color: white;
+  border: none;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Better Cart Item Layout */
+.cart-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.cart-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.cart-details {
+  flex: 1;
+}
+
+.cart-details h4 {
+  font-size: 14px;
+}
+
+.cart-details p {
+  font-size: 12px;
+  color: gray;
+}
+
+.qty-box {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+/* Add to cart bala msg show ...  */
+#toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #60ca0e;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  display: none;
+  z-index: 9999;
+}
+
+#toast.show {
+  display: block;
+}
+/* #toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #0c8a8f;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 5px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: 0.1s;
+  z-index: 9999;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateY(0);
+} */
+
+/* ACCOUNT POPUP */
+.account-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.account-box {
+  background: white;
+  padding: 20px;
+  width: 300px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.account-box input {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.account-box button {
+  padding: 10px;
+  background: #0c8a8f;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.form-error {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
