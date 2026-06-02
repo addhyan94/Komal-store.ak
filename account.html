@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Account</title>
+
+<style>
+body {
+  background: #f1f3f6;
+  font-family: 'Poppins', sans-serif;
+}
+
+.header-bar {
+  background: #0c8a8f;
+  color: white;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-btn {
+  background: white;
+  color: #0c8a8f;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.home-btn:hover {
+  background: #e6f7f7;
+}
+
+.header-bar button {
+  background: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+.account-container {
+  width: 80%;
+  margin: 40px auto;
+  display: flex;
+  gap: 20px;
+}
+
+/* Sidebar */
+.account-sidebar {
+  width: 25%;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.account-sidebar div {
+  padding: 12px;
+  cursor: pointer;
+}
+
+.account-sidebar div:hover {
+  background: #f5f5f5;
+}
+
+/* Content */
+.account-content {
+  width: 75%;
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.account-box p {
+  margin: 10px 0;
+}
+
+.account-content input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+}
+
+.account-content label {
+  font-size: 13px;
+  color: gray;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.edit-btn {
+  background: #0c8a8f;
+  color: white;
+}
+
+.save-btn {
+  background: green;
+  color: white;
+}
+
+/* Popup */
+.popup-box {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.divider {
+  height: 1px;
+  background: #ddd;
+  margin: 15px 0;
+}
+
+.logout-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.popup {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.5);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.popup-box {
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header-bar">
+  <h2>My Account</h2>
+  <button class="home-btn" onclick="goHome()">🏠 Home</button>
+</div>
+
+<div class="account-container">
+
+  <!-- Sidebar -->
+  <div class="account-sidebar">
+    <div>Profile</div>
+    <div>My Orders</div>
+    <div>Saved Address</div>
+    <div onclick="showLogout()">Logout</div>
+  </div>
+
+  <!-- Content -->
+  <div class="account-content">
+    <h2>Profile Details</h2>
+
+    <div id="accountDetails"></div>
+<div id="profileError" class="form-error"></div>
+    <button class="btn edit-btn" onclick="editProfile()">Edit</button>
+    <button class="btn save-btn" onclick="saveProfile()" style="display:none;" id="saveBtn">Save</button>
+  </div>
+
+</div>
+
+<!-- Logout Popup -->
+<div id="logoutPopup" class="popup">
+  <div class="popup-box">
+
+    <span class="close-btn" onclick="closePopup()">✖</span>
+
+    <h3 id="popupName"></h3>
+    <p id="popupPhone"></p>
+
+    <div class="divider"></div>
+
+    <p>Are you sure you want to logout?</p>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
+  </div>
+</div>
+
+<script>
+
+let user = JSON.parse(localStorage.getItem("user"));
+const box = document.getElementById("accountDetails");
+
+/* LOAD USER */
+function loadUser() {
+  if (!user) {
+    box.innerHTML = "<h3>No account found</h3>";
+    return;
+  }
+
+  box.innerHTML = `
+    <p><b>Name:</b> <span id="name">${user.name}</span></p>
+    <p><b>Phone:</b> <span id="phone">${user.phone}</span></p>
+    <p><b>Second Phone:</b> <span id="phone2">${user.phone2 || "-"}</span></p>
+    <p><b>Address:</b> <span id="address">${user.address}</span></p>
+    <p><b>Pincode:</b> <span id="pincode">${user.pincode}</span></p>
+    <p><b>Landmark:</b> <span id="landmark">${user.landmark}</span></p>
+  `;
+}
+
+loadUser();
+
+/* EDIT MODE */
+
+
+function editProfile() {
+  box.innerHTML = `
+    <label>Name</label>
+    <input id="name" value="${user.name}">
+
+    <label>Phone</label>
+    <input id="phone" value="${user.phone}">
+
+    <label>Second Phone</label>
+    <input id="phone2" value="${user.phone2 || ""}">
+
+    <label>Address</label>
+    <input id="address" value="${user.address}">
+
+    <label>Pincode</label>
+    <input id="pincode" value="${user.pincode}">
+
+    <label>Landmark</label>
+    <input id="landmark" value="${user.landmark}">
+  `;
+
+  document.getElementById("saveBtn").style.display = "inline-block";
+}
+// function editProfile() {
+//   box.innerHTML = `
+//     <input id="name" value="${user.name}">
+//     <input id="phone" value="${user.phone}">
+//     <input id="phone2" value="${user.phone2 || ""}">
+//     <input id="address" value="${user.address}">
+//     <input id="pincode" value="${user.pincode}">
+//     <input id="landmark" value="${user.landmark}">
+//   `;
+
+//   document.getElementById("saveBtn").style.display = "inline-block";
+// }
+
+/* SAVE EDIT */
+function saveEdit() {
+  user = {
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    phone2: document.getElementById("phone2").value,
+    address: document.getElementById("address").value,
+    pincode: document.getElementById("pincode").value,
+    landmark: document.getElementById("landmark").value
+  };
+
+  localStorage.setItem("user", JSON.stringify(user));
+
+  loadUser();
+  document.getElementById("saveBtn").style.display = "none";
+}
+
+function saveProfile() {
+  const errorBox = document.getElementById("profileError");
+
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const phone2 = document.getElementById("phone2").value.trim();
+  const address = document.getElementById("address").value.trim();
+  const pincode = document.getElementById("pincode").value.trim();
+  const landmark = document.getElementById("landmark").value.trim();
+
+  errorBox.innerText = "";
+
+  if (!name || !phone || !address || !pincode || !landmark) {
+    errorBox.innerText = "All fields required ❌";
+    return;
+  }
+
+  if (!/^[0-9]{10}$/.test(phone)) {
+    errorBox.innerText = "Phone must be 10 digits ❌";
+    return;
+  }
+
+  if (phone2 && !/^[0-9]{10}$/.test(phone2)) {
+    errorBox.innerText = "Second phone invalid ❌";
+    return;
+  }
+
+  const user = { name, phone, phone2, address, pincode, landmark };
+
+  localStorage.setItem("user", JSON.stringify(user));
+
+  showToast("Profile updated ✅");
+}
+
+
+
+/* main webpage per wapis jane ke liye */
+function goHome() {
+  window.location.href = "first.html";
+}
+
+/* logout card popup  */
+function showLogout() {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  document.getElementById("popupName").innerText = user.name;
+  document.getElementById("popupPhone").innerText = user.phone;
+
+  const popup = document.getElementById("logoutPopup");
+  popup.style.display = "flex";
+}
+
+/* popup logout msg close systerm ...*/
+function closePopup() {
+  document.getElementById("logoutPopup").style.display = "none";
+}
+
+// outside click karne per close 
+document.getElementById("logoutPopup").addEventListener("click", function(e){
+  if(e.target.id === "logoutPopup"){
+    closePopup();
+  }
+});
+
+// esc key dawane per close 
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape") closePopup();
+});
+/* logout system  */
+function logout() {
+  localStorage.removeItem("user");
+
+  showToast("Logout successful ✅");
+
+  setTimeout(() => {
+    window.location.href = "first.html";
+  }, 1200);
+}
+
+document.getElementById("logoutPopup").addEventListener("click", function(e){
+  if(e.target.id === "logoutPopup"){
+    closePopup();
+  }
+});
+
+function closePopup() {
+  const popup = document.getElementById("logoutPopup");
+  popup.style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
