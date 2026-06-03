@@ -29,13 +29,14 @@
   <!-- Header -->
   <header class="header">
     <div id="toast"></div>
+    <div id="toast"></div>
 
     <div class="logo">
       <h3>Komal Journal Store</h3>
       <span>Rawarpura, Lalitpur (U.P)</span>
     </div>
-<!-- Sarch system ......................  -->
- 
+    <!-- Sarch system ......................  -->
+
     <div class="search">
       <input id="searchInput" type="text" placeholder="Search for products...">
       <div id="suggestions" class="suggestions"></div>
@@ -43,22 +44,24 @@
     </div>
 
     <div class="actions">
-      <div>🚚 My Order</div>
-      <div onclick="goToAccount()">👤 Account</div>
+      <div style="cursor: pointer;" onclick="openOrders()">🚚 My Order</div>
+      <div style="cursor: pointer;" onclick="goToAccount()">👤 Account</div>
 
-      <!-- Cart Panel -->
-      <div onclick="toggleCart()"><button>🛒 Cart</button></div>
-      <div class="cart-panel" id="cartPanel">
+      <!-- Cart Panel ................................... -->
+      <div onclick="goCart()"><button>🛒 Cart</button></div>
+      
+      <!-- <div class="cart-panel" id="cartPanel">
         <button onclick="toggleCart()" style="float:right;">✖</button>
         <h2>Your Cart</h2>
         <div id="cartItems"></div>
 
         <h3>Total: ₹<span id="totalPrice">0</span></h3>
         <button onclick="clearCart()" class="clear-btn">Clear Cart</button>
-      </div>
+        <button onclick="placeOrder()" class="clear-btn">Place Order</button>
+      </div> -->
   </header>
 
-  <!-- Navbar -->
+  <!-- Navbar ............................ -->
   <nav class="navbar">
     <div class="menu">☰ All Categories</div>
     <ul>
@@ -70,7 +73,7 @@
     </ul>
   </nav>
 
-  <!-- Hero section -->
+  <!-- Hero section ................................ -->
   <section class="hero">
     <div class="hero-left">
       <h1>Komal Chand <br> Journal Store</h1>
@@ -79,11 +82,11 @@
     </div>
 
     <div class="hero-right">
-      <img src="Assets/men-leftside-point.jpg">
+      <img src="Assets/men-leftside-point.jpg " loading="lazy">
     </div>
   </section>
 
-  <!-- Features Section -->
+  <!-- Features Section .....................  -->
   <section class="features">
     <div>Wide Range</div>
     <div>Best Quality</div>
@@ -92,7 +95,7 @@
     <div>Easy Returns</div>
   </section>
 
-  <!-- Categories Boxes  -->
+  <!-- Categories Boxes ............................... -->
   <section class="categories">
     <h2>Shop by Categories</h2>
 
@@ -115,14 +118,14 @@
     </div>
   </section>
 
-  <!-- Products Section Add JS  -->
+  <!-- Products Section Add In JS .....................................  -->
   <section class="products" id="Best-products">
     <h2>Best products</h2>
 
     <div class="product-grid" id="products"></div>
   </section>
 
-  <!-- Footer -->
+  <!-- Footer ....................................-->
   <footer>
     <div class="footer">
       <div>
@@ -138,7 +141,7 @@
 
       <div>
         <h4>Customer Service</h4>
-        <p>Track Order</p>
+        <p onclick="openOrders()">Track Order</p>
       </div>
 
       <div>
@@ -148,23 +151,23 @@
     </div>
   </footer>
 
-  <!-- ACCOUNT POPUP -->
-<div id="accountPopup" class="account-popup">
-  <div class="account-box">
-    <h2>Create Account</h2>
-<div id="formError" class="form-error"></div>
-    <input type="text" id="name" placeholder="Full Name">
-    <input type="text" id="phone" placeholder="Phone Number">
-    <input type="text" id="phone2" placeholder="Second Phone (optional)">
-    <input type="text" id="address" placeholder="Address">
-    <input type="text" id="pincode" placeholder="Pincode">
-    <input type="text" id="landmark" placeholder="Landmark">
+  <!-- Account popup card................................ -->
+  <div id="accountPopup" class="account-popup">
+    <div class="account-box">
+      <h2>Create Account</h2>
+      <div id="formError" class="form-error"></div>
+      <input type="text" id="name" placeholder="Full Name">
+      <input type="text" id="phone" placeholder="Phone Number">
+      <input type="text" id="phone2" placeholder="Second Phone (optional)">
+      <input type="text" id="address" placeholder="Address">
+      <input type="text" id="pincode" placeholder="Pincode">
+      <input type="text" id="landmark" placeholder="Landmark">
 
-    <button onclick="saveAccount()">Save Details</button>
+      <button onclick="saveAccount()">Save Details</button>
+    </div>
   </div>
-</div>
   <!-- day 2 add this line ......................................................... -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script> -->
   <!-- -------------------------------------------------------------------------------------- -->
   <script src="script.js"></script>
 </body>
