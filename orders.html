@@ -1,0 +1,487 @@
+<!-- Order HTML file + Css + Js included  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Orders</title>
+    <link rel="stylesheet" href="orders.css">
+    <style>
+        body {
+            font-family: Arial;
+            background: #f1f3f6;
+            margin: 0;
+        }
+
+        .orders-header {
+            background: #0c8a8f;
+            color: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-actions button {
+            margin-left: 10px;
+            background: white;
+            color: #0c8a8f;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .header-actions button:hover {
+            background: #e6f7f7;
+        }
+
+        .order-count {
+            padding: 20px 5%;
+            font-weight: bold;
+        }
+
+        .order-card {
+            background: white;
+            margin: 20px 5%;
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .order-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+
+        .order-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+            background: #f9fbfb;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        /* Product Row */
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-top: 1px dashed #eee;
+        }
+
+        .order-left img {
+            width: 80px;
+            border-radius: 5px;
+        }
+
+        .order-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+
+        .order-info h4 {
+            margin: 0;
+            font-size: 17px;
+        }
+
+        .order-info p {
+            margin: 3px;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+
+        /* Button */
+        .buy-btn {
+            background: #ff9f00;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .order-details {
+            transition: all 0.3s ease;
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 280px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            cursor: pointer;
+        }
+
+        .divider {
+            height: 1px;
+            background: #ddd;
+            margin: 10px 0;
+        }
+
+        .logout-btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            background: #0c8a8f;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #errorContainer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .error-card-main-div {
+            width: 330px;
+            height: 80px;
+            border-radius: 8px;
+            box-sizing: border-box;
+            padding: 10px 15px;
+            background-color: #ffffff;
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 15px;
+        }
+
+        .left-side-wave-style {
+            position: absolute;
+            transform: rotate(90deg);
+            left: -31px;
+            top: 32px;
+            width: 80px;
+            fill: #fc0c0c3a;
+        }
+
+        .main-icon-containor-box {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fc0c0c48;
+            border-radius: 50%;
+            margin-left: 8px;
+        }
+
+        .main-icon-hhhh {
+            width: 17px;
+            height: 17px;
+            color: #d10d0d;
+        }
+
+        .msg-text-continour-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            flex-grow: 1;
+        }
+
+        .msg-txt-test,
+        .msg-sub-txt-text {
+            margin: 0;
+            cursor: default;
+        }
+
+        .msg-txt-test {
+            color: #d10d0d;
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .msg-sub-txt-text {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .main-cross-icon-sign {
+            width: 18px;
+            height: 18px;
+            color: #555;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="errorContainer"></div>
+    <div id="popupMsg" class="popup-msg"></div>
+
+    <!-- Header -->
+    <div class="orders-header">
+        <h2>My Orders</h2>
+
+        <div class="header-actions">
+            <button onclick="goBack()">⬅</button>
+            <button onclick="goCart()">🛒</button>
+        </div>
+    </div>
+
+    <!-- Order Count -->
+    <div class="order-count">
+        <p><span id="orderCount">0</span> orders placed</p>
+    </div>
+
+    <!-- Orders Container -->
+    <div id="ordersContainer" class="orders-container"></div>
+    <div id="supportPopup" class="popup">
+        <div class="popup-box">
+
+            <span class="close-btn" onclick="closeSupport()">✖</span>
+
+            <h3>Komal Chand Store</h3>
+            <p><b>Owner:</b> Komal Chand</p>
+
+            <div class="divider"></div>
+
+            <p>📞 Phone: 9999999999</p>
+            <p>📱 WhatsApp: 9999999999</p>
+            <p>📍 Address: Rawarpura, Lalitpur (U.P)</p>
+            <p>🕒 Timing: 9AM - 9PM</p>
+
+            <div class="divider"></div>
+
+            <button class="logout-btn" onclick="callNow()">Call Now</button>
+            <button class="logout-btn" onclick="openWhatsApp()">WhatsApp</button>
+
+        </div>
+    </div>
+
+    <footer style="background:#222; color:white; padding:30px 5%; margin-top:40px;">
+        <div style="display:flex; justify-content:space-between; flex-wrap:wrap;">
+
+            <div>
+                <h3>Komal Chand Store</h3>
+                <p>Your one-stop shop</p>
+            </div>
+
+            <div>
+                <h4>Quick Links</h4>
+                <p>Home</p>
+                <p onclick="openOrders()">Track Order</p>
+            </div>
+
+            <div>
+                <h4>Contact</h4>
+                <p>+91 9999999999</p>
+                <p>Lalitpur (U.P)</p>
+            </div>
+
+        </div>
+    </footer>
+    <script src="utils.js"></script>
+    <script src="orders.js"></script>
+    <script>
+        const container = document.getElementById("ordersContainer");
+        const orderCount = document.getElementById("orderCount");
+
+        let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+        orderCount.innerText = orders.length;
+
+        /* Render Orders */
+        function renderOrders() {
+            container.innerHTML = "";
+
+            if (orders.length === 0) {
+                showError("No orders found 📦");
+                container.innerHTML = "<p style='padding:20px'>No orders yet</p>";
+                return;
+            }
+
+            orders.forEach(order => {
+                let itemsHTML = "";
+
+                order.items.forEach(item => {
+                    itemsHTML += `
+        <div class="order-item">
+          <div class="order-left">
+            <img src="${item.img}">
+            <div class="order-info">
+              <h4>${item.name}</h4>
+              <p>₹${item.price} | Qty: ${item.qty}</p>
+            </div>
+          </div>
+
+          <button class="buy-btn" onclick="buyAgain(${item.id})">
+            Buy Again
+          </button>
+        </div>
+      `;
+                });
+
+                container.innerHTML += `
+  <div class="order-card" onclick="toggleDetails(${order.id})">
+        
+        <div class="order-top">
+          <div>
+            <strong>Order ID:</strong> #${order.id}<br>
+            <strong>Date:</strong> ${order.date}<br>
+<strong>Status:</strong> Delivered ✅
+          </div>
+
+          <div>
+            <strong>Total:</strong> ₹${order.total}
+          </div>
+        </div>
+
+       ${itemsHTML}
+
+<div class="order-details" id="details-${order.id}" style="display:none; margin-top:15px; border-top:1px solid #ddd; padding-top:10px;">
+  
+  <p><b>Items Total:</b> ₹${order.total}</p>
+  <p><b>Delivery:</b> ₹20</p>
+  <p><b>Final Total:</b> ₹${order.total + 20}</p>
+
+  <div style="text-align:right; margin-top:10px;">
+   <button onclick="event.stopPropagation(); showSupport()" class="buy-btn">
+  Contact Support
+</button>
+  </div>
+
+</div>
+
+      </div>
+    `;
+            });
+
+        }
+
+        /* Buy Again */
+        function buyAgain(id) {
+            window.location.href = "index.html#Best-products";
+
+            setTimeout(() => {
+                const btn = document.querySelector(`[onclick="addToCart(${id})"]`);
+                if (btn) btn.click();
+            }, 500);
+        }
+
+        renderOrders();
+
+        function toggleDetails(id) {
+            const box = document.getElementById("details-" + id);
+
+            if (!box) return;
+
+            box.style.display = box.style.display === "block" ? "none" : "block";
+        }
+
+        function goBack() {
+            window.location.href = "first.html";
+        }
+
+        function goCart() {
+            window.location.href = "first.html";
+        }
+
+
+
+
+        /* SUPPORT POPUP OPEN */
+        function showSupport() {
+            document.getElementById("supportPopup").style.display = "flex";
+        }
+
+        /* SUPPORT CLOSE */
+        function closeSupport() {
+            document.getElementById("supportPopup").style.display = "none";
+        }
+
+        /* OUTSIDE CLICK CLOSE */
+        document.getElementById("supportPopup").addEventListener("click", function (e) {
+            if (e.target.id === "supportPopup") {
+                closeSupport();
+            }
+        });
+
+        /* ESC CLOSE */
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") closeSupport();
+        });
+
+        /* CALL BUTTON .........................................................Number add karna hai */
+        function callNow() {
+            window.location.href = "tel:9999999999";
+        }
+
+        function openWhatsApp() {
+            const user = JSON.parse(localStorage.getItem("user"));
+
+            if (!user) {
+                showError("Please create account first ❌");
+                return;
+            }
+
+            const name = user.name || "Customer";
+            const phone = user.phone || "-";
+            const address = user.address || "-";
+
+            const msg = `Hello Komal Chand Store 👋
+
+I'm ${name}
+
+📞 Phone: ${phone}
+📍 Address: ${address}
+
+
+I need help regarding your products/store.
+Please contact me as soon as possible.
+
+Thank you 😊`;
+            /*.........................................................Number add karna hai */
+            const url = "https://wa.me/91xxxxxxxxxx?text=" + encodeURIComponent(msg);
+
+            window.open(url, "_blank");
+        }
+        function openOrders() {
+            window.location.href = "orders.html";
+        }
+
+    </script>
+</body>
+
+</html>
