@@ -1,229 +1,477 @@
+<!-- Account HTML file + Css + Js included  -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>My Account</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-body {
-  background: #f1f3f6;
-  font-family: 'Poppins', sans-serif;
-}
+  <title>My Account</title>
 
-.header-bar {
-  background: #0c8a8f;
-  color: white;
-  padding: 15px 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  <style>
+    body {
+      background: #f1f3f6;
+      font-family: 'Poppins', sans-serif;
+      margin: 0px;
+    }
 
-.home-btn {
-  background: white;
-  color: #0c8a8f;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 20px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: 0.3s;
-}
+    .menu-item {
+      padding: 12px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.2s;
+    }
 
-.home-btn:hover {
-  background: #e6f7f7;
-}
+    .menu-item:hover {
+      background: #f5f5f5;
+    }
 
-.header-bar button {
-  background: white;
-  border: none;
-  padding: 8px 15px;
-  cursor: pointer;
-}
+    .menu-item.active {
+      background: #e6f7f7;
+      font-weight: 600;
+      border-left: 4px solid #0c8a8f;
+      padding-left: 8px;
+    }
 
-.account-container {
-  width: 80%;
-  margin: 40px auto;
-  display: flex;
-  gap: 20px;
-}
 
-/* Sidebar */
-.account-sidebar {
-  width: 25%;
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
-}
+    .header-bar {
+      background: #0c8a8f;
+      color: white;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.account-sidebar div {
-  padding: 12px;
-  cursor: pointer;
-}
+    .home-btn {
+      background: white;
+      color: #0c8a8f;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-.account-sidebar div:hover {
-  background: #f5f5f5;
-}
+    .home-btn:hover {
+      background: #e6f7f7;
+    }
 
-/* Content */
-.account-content {
-  width: 75%;
-  background: white;
-  border-radius: 10px;
-  padding: 25px;
-}
+    .header-bar button {
+      background: white;
+      border: none;
+      padding: 8px 15px;
+      cursor: pointer;
+    }
 
-.account-box p {
-  margin: 10px 0;
-}
+    .account-container {
+      width: 80%;
+      margin: 40px auto;
+      display: flex;
+      gap: 20px;
+    }
 
-.account-content input {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-}
+    /* Sidebar sectiomn ...................... */
+    .account-sidebar {
+      width: 25%;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+    }
 
-.account-content label {
-  font-size: 13px;
-  color: gray;
-}
+    .account-sidebar div {
+      padding: 12px;
+      cursor: pointer;
+    }
 
-/* Buttons */
-.btn {
-  padding: 10px 15px;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
-}
+    .account-sidebar div:hover {
+      background: #f5f5f5;
+    }
 
-.edit-btn {
-  background: #0c8a8f;
-  color: white;
-}
+    /* Content section,,,,,,,,,,,,,,,,,,,,,,, */
+    .account-content {
+      width: 75%;
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+    }
 
-.save-btn {
-  background: green;
-  color: white;
-}
+    .account-box p {
+      margin: 10px 0;
+    }
 
-/* Popup */
-.popup-box {
-  background: white;
-  padding: 25px;
-  border-radius: 12px;
-  width: 300px;
-  text-align: center;
-  position: relative;
-}
+    .account-content input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+    }
 
-.close-btn {
-  position: absolute;
-  right: 15px;
-  top: 10px;
-  cursor: pointer;
-  font-size: 18px;
-}
+    .account-content label {
+      font-size: 13px;
+      color: gray;
+    }
 
-.divider {
-  height: 1px;
-  background: #ddd;
-  margin: 15px 0;
-}
+    /* all Buttons style........................ */
+    .btn {
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
 
-.logout-btn {
-  background: red;
-  color: white;
-  border: none;
-  padding: 10px;
-  width: 100%;
-  margin-top: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-.popup {
-  position: fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background: rgba(0,0,0,0.5);
-  display:none;
-  justify-content:center;
-  align-items:center;
-}
+    .edit-btn {
+      background: #0c8a8f;
+      color: white;
+    }
 
-.popup-box {
-  background:white;
-  padding:20px;
-  border-radius:10px;
-  text-align:center;
-}
-</style>
+    .save-btn {
+      background: green;
+      color: white;
+    }
+
+    /* Popup card style............................ */
+    .popup-box {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      width: 300px;
+      text-align: center;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .divider {
+      height: 1px;
+      background: #ddd;
+      margin: 15px 0;
+    }
+
+    .logout-btn {
+      background: red;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    button {
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .popup-msg {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+    }
+
+    .card {
+      width: 300px;
+      height: 60px;
+      border-radius: 8px;
+      box-sizing: border-box;
+      padding: 10px 15px;
+      background-color: #ffffff;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 15px;
+    }
+
+    .wave {
+      position: absolute;
+      transform: rotate(90deg);
+      left: -31px;
+      top: 32px;
+      width: 80px;
+      fill: #04e4003a;
+    }
+
+    .icon-container {
+      width: 35px;
+      height: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #04e40048;
+      border-radius: 50%;
+      margin-left: 8px;
+    }
+
+    .icon {
+      width: 17px;
+      height: 17px;
+      color: #269b24;
+    }
+
+    .message-text-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      flex-grow: 1;
+    }
+
+    .message-text,
+    .sub-text {
+      margin: 0;
+      cursor: default;
+    }
+
+    .message-text {
+      color: #269b24;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .sub-text {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .cross-icon {
+      width: 18px;
+      height: 18px;
+      color: #555;
+      cursor: pointer;
+    }
+
+    #errorContainer {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .error-card-main-div {
+      width: 330px;
+      height: 80px;
+      border-radius: 8px;
+      box-sizing: border-box;
+      padding: 10px 15px;
+      background-color: #ffffff;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 15px;
+    }
+
+    .left-side-wave-style {
+      position: absolute;
+      transform: rotate(90deg);
+      left: -31px;
+      top: 32px;
+      width: 80px;
+      fill: #fc0c0c3a;
+    }
+
+    .main-icon-containor-box {
+      width: 35px;
+      height: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fc0c0c48;
+      border-radius: 50%;
+      margin-left: 8px;
+    }
+
+    .main-icon-hhhh {
+      width: 17px;
+      height: 17px;
+      color: #d10d0d;
+    }
+
+    .msg-text-continour-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      flex-grow: 1;
+    }
+
+    .msg-txt-test,
+    .msg-sub-txt-text {
+      margin: 0;
+      cursor: default;
+    }
+
+    .msg-txt-test {
+      color: #d10d0d;
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .msg-sub-txt-text {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .main-cross-icon-sign {
+      width: 18px;
+      height: 18px;
+      color: #555;
+      cursor: pointer;
+    }
+      .nav-icons {
+    display: flex;
+    gap: 25px;
+  }
+
+  .nav-icons div {
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+
+  }
+  </style>
 </head>
 
 <body>
+  <div id="popupMsg" class="popup-msg"></div>
+  <div id="errorContainer"></div>
 
-<!-- HEADER -->
-<div class="header-bar">
-  <h2>My Account</h2>
-  <button class="home-btn" onclick="goHome()">🏠 Home</button>
-</div>
+  <div class="header-bar">
+    <h2>My Account</h2>
+       <div class="nav-icons">
+            <div onclick="goHome()">
+    <i class="fa-solid fa-house"></i><br>
+    <span>Home</span>
+  </div>
+      <div onclick="goCart()">
+        <i class="fa-solid fa-cart-arrow-down"></i><br>
+        <span>Cart</span>
+      </div>
 
-<div class="account-container">
+      <div onclick="openOrders()">
+        <i class="fa-solid fa-truck"></i><br>
+        <span>My Orders</span>
+      </div>
 
-  <!-- Sidebar -->
-  <div class="account-sidebar">
-    <div>Profile</div>
-    <div>My Orders</div>
-    <div>Saved Address</div>
-    <div onclick="showLogout()">Logout</div>
+   
+    </div>
   </div>
 
-  <!-- Content -->
-  <div class="account-content">
-    <h2>Profile Details</h2>
+  <div class="account-container">
 
-    <div id="accountDetails"></div>
-<div id="profileError" class="form-error"></div>
-    <button class="btn edit-btn" onclick="editProfile()">Edit</button>
-    <button class="btn save-btn" onclick="saveProfile()" style="display:none;" id="saveBtn">Save</button>
-  </div>
+    <div class="account-sidebar">
+      <div class="menu-item active" onclick="setActive(this)">Profile</div>
+      <div class="menu-item" onclick="openOrders(); setActive(this)">My Orders</div>
+      <div class="menu-item" onclick="setActive(this); showSupport()">Customer Support</div>
+      <div class="menu-item" onclick="setActive(this); showLogout()">Logout</div>
+    </div>
 
-</div>
 
-<!-- Logout Popup -->
-<div id="logoutPopup" class="popup">
-  <div class="popup-box">
+    <div class="account-content">
+      <h2>Profile Details</h2>
 
-    <span class="close-btn" onclick="closePopup()">✖</span>
-
-    <h3 id="popupName"></h3>
-    <p id="popupPhone"></p>
-
-    <div class="divider"></div>
-
-    <p>Are you sure you want to logout?</p>
-
-    <button class="logout-btn" onclick="logout()">Logout</button>
+      <div id="accountDetails"></div>
+      <div id="profileError" class="form-error"></div>
+      <button class="btn edit-btn" onclick="editProfile()">Edit</button>
+      <button class="btn save-btn" onclick="saveProfile()" style="display:none;" id="saveBtn">Save</button>
+    </div>
 
   </div>
-</div>
 
-<script>
 
-let user = JSON.parse(localStorage.getItem("user"));
-const box = document.getElementById("accountDetails");
+  <div id="logoutPopup" class="popup">
+    <div class="popup-box">
 
-/* LOAD USER */
-function loadUser() {
-  if (!user) {
-    box.innerHTML = "<h3>No account found</h3>";
-    return;
-  }
+      <span class="close-btn" onclick="closePopup()">✖</span>
 
-  box.innerHTML = `
+      <h3 id="popupName"></h3>
+      <p id="popupPhone"></p>
+
+      <div class="divider"></div>
+
+      <p>Are you sure you want to logout?</p>
+
+      <button class="logout-btn" onclick="logout()">Logout</button>
+
+    </div>
+  </div>
+
+  <!-- Customer Support Popup -->
+  <div id="supportPopup" class="popup">
+    <div class="popup-box">
+
+      <span class="close-btn" onclick="closeSupport()">✖</span>
+
+      <h3>Komal Chand Store</h3>
+      <p><b>Owner:</b> Komal Chand</p>
+
+      <div class="divider"></div>
+
+      <p>📞 Phone: 9999999999</p>
+      <p>📱 WhatsApp: 9999999999</p>
+      <p>📍 Address: Rawarpura, Lalitpur (U.P)</p>
+      <p>🕒 Timing: 9AM - 9PM</p>
+
+      <div class="divider"></div>
+
+      <button class="logout-btn" onclick="callNow()">Call Now</button>
+      <button class="logout-btn" onclick="openWhatsApp()">WhatsApp</button>
+
+    </div>
+  </div>
+<script src="utils.js"></script>
+  <script>
+
+    let user = JSON.parse(localStorage.getItem("user"));
+    const box = document.getElementById("accountDetails");
+
+    /* LOAD USER */
+    function loadUser() {
+      if (!user) {
+        box.innerHTML = "<h3>No account found</h3>";
+        showError("Please create account first ❌");
+        return;
+      }
+
+      box.innerHTML = `
     <p><b>Name:</b> <span id="name">${user.name}</span></p>
     <p><b>Phone:</b> <span id="phone">${user.phone}</span></p>
     <p><b>Second Phone:</b> <span id="phone2">${user.phone2 || "-"}</span></p>
@@ -231,15 +479,12 @@ function loadUser() {
     <p><b>Pincode:</b> <span id="pincode">${user.pincode}</span></p>
     <p><b>Landmark:</b> <span id="landmark">${user.landmark}</span></p>
   `;
-}
+    }
 
-loadUser();
+    loadUser();
 
-/* EDIT MODE */
-
-
-function editProfile() {
-  box.innerHTML = `
+    function editProfile() {
+      box.innerHTML = `
     <label>Name</label>
     <input id="name" value="${user.name}">
 
@@ -259,129 +504,201 @@ function editProfile() {
     <input id="landmark" value="${user.landmark}">
   `;
 
-  document.getElementById("saveBtn").style.display = "inline-block";
+      document.getElementById("saveBtn").style.display = "inline-block";
+    }
+
+    function saveProfile() {
+      const errorBox = document.getElementById("profileError");
+
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const phone2 = document.getElementById("phone2").value.trim();
+      const address = document.getElementById("address").value.trim();
+      const pincode = document.getElementById("pincode").value.trim();
+      const landmark = document.getElementById("landmark").value.trim();
+
+      if (!name || !phone || !address || !pincode || !landmark) {
+        showError("Please fill all details ❌");
+        return;
+      }
+
+      if (phone.length !== 10) {
+        showError("Phone must be 10 digits ❌");
+        return;
+      }
+
+      errorBox.innerText = "";
+
+      if (!name || !phone || !address || !pincode || !landmark) {
+        errorBox.innerText = "All fields required ❌";
+        return;
+      }
+
+      if (!/^[0-9]{10}$/.test(phone)) {
+        errorBox.innerText = "Phone must be 10 digits ❌";
+        return;
+      }
+
+      if (phone2 && !/^[0-9]{10}$/.test(phone2)) {
+        errorBox.innerText = "Second phone invalid ❌";
+        return;
+      }
+
+      user = { name, phone, phone2, address, pincode, landmark };
+      localStorage.setItem("user", JSON.stringify(user));
+
+      loadUser();
+      document.getElementById("saveBtn").style.display = "none";
+
+      showPopup("Profile Updated ✅", "Changes saved");
+    }
+
+    function goHome() {
+      window.location.href = "first.html";
+    }
+
+    /* logout card popup ................................ */
+    function showLogout() {
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      document.getElementById("popupName").innerText = user.name;
+      document.getElementById("popupPhone").innerText = user.phone;
+
+      const popup = document.getElementById("logoutPopup");
+      popup.style.display = "flex";
+    }
+
+    /* popup logout msg close systerm .................*/
+    // outside click karne per close 
+    document.getElementById("logoutPopup").addEventListener("click", function (e) {
+      if (e.target.id === "logoutPopup") {
+        closePopup();
+      }
+    });
+
+    // esc key dawane per close 
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closePopup();
+    });
+    /* logout system...........  */
+    function logout() {
+      localStorage.removeItem("user");
+
+      showPopup("Logged Out ❌", "See you again");
+
+      setTimeout(() => {
+        window.location.href = "first.html";
+      }, 1200);
+    }
+
+    function closePopup() {
+      const popup = document.getElementById("logoutPopup");
+      popup.style.display = "none";
+    }
+
+    function closePopup() {
+      document.getElementById("popupMsg").style.display = "none";
+    }
+
+    function showToast(msg) {
+      const toast = document.createElement("div");
+
+      toast.innerText = msg;
+      toast.style.position = "fixed";
+      toast.style.top = "20px";
+      toast.style.left = "50%";
+      toast.style.transform = "translateX(-50%)";
+      toast.style.background = "#03a17c";
+      toast.style.color = "white";
+      toast.style.padding = "10px 20px";
+      toast.style.borderRadius = "5px";
+      toast.style.zIndex = "9999";
+
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.remove();
+      }, 2000);
+    }
+
+
+    function showSupport() {
+      document.getElementById("supportPopup").style.display = "flex";
+    }
+
+    function closeSupport() {
+      document.getElementById("supportPopup").style.display = "none";
+    }
+
+
+    document.getElementById("supportPopup").addEventListener("click", function (e) {
+      if (e.target.id === "supportPopup") {
+        closeSupport();
+      }
+    });
+
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeSupport();
+    });
+
+    /* CALL BUTTON .........................................................Number add karna hai */
+    function callNow() {
+      window.location.href = "tel:9999999999";
+    }
+
+    function openWhatsApp() {
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      if (!user) {
+        showError("Please create account first ❌");
+        return;
+      }
+
+      const name = user.name || "Customer";
+      const phone = user.phone || "-";
+      const address = user.address || "-";
+
+      const msg = `Hello Komal Chand Store 👋
+
+I'm ${name}
+
+📞 Phone: ${phone}
+📍 Address: ${address}
+
+
+I need help regarding your products/store.
+Please contact me as soon as possible.
+
+Thank you 😊`;
+      /*.........................................................Number add karna hai */
+      const url = "https://wa.me/91xxxxxxxxxx?text=" + encodeURIComponent(msg);
+
+      window.open(url, "_blank");
+    }
+
+    function setActive(element) {
+      const items = document.querySelectorAll(".menu-item");
+
+      items.forEach(item => item.classList.remove("active"));
+
+      element.classList.add("active");
+    }
+
+    function openOrders() {
+      window.location.href = "orders.html";
+    }
+    if (window.location.href.includes("orders")) {
+      document.querySelectorAll(".menu-item")[1].classList.add("active");
+    }
+
+    
+function goCart() {
+  window.location.href = "cart.html";
 }
-// function editProfile() {
-//   box.innerHTML = `
-//     <input id="name" value="${user.name}">
-//     <input id="phone" value="${user.phone}">
-//     <input id="phone2" value="${user.phone2 || ""}">
-//     <input id="address" value="${user.address}">
-//     <input id="pincode" value="${user.pincode}">
-//     <input id="landmark" value="${user.landmark}">
-//   `;
 
-//   document.getElementById("saveBtn").style.display = "inline-block";
-// }
-
-/* SAVE EDIT */
-function saveEdit() {
-  user = {
-    name: document.getElementById("name").value,
-    phone: document.getElementById("phone").value,
-    phone2: document.getElementById("phone2").value,
-    address: document.getElementById("address").value,
-    pincode: document.getElementById("pincode").value,
-    landmark: document.getElementById("landmark").value
-  };
-
-  localStorage.setItem("user", JSON.stringify(user));
-
-  loadUser();
-  document.getElementById("saveBtn").style.display = "none";
-}
-
-function saveProfile() {
-  const errorBox = document.getElementById("profileError");
-
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const phone2 = document.getElementById("phone2").value.trim();
-  const address = document.getElementById("address").value.trim();
-  const pincode = document.getElementById("pincode").value.trim();
-  const landmark = document.getElementById("landmark").value.trim();
-
-  errorBox.innerText = "";
-
-  if (!name || !phone || !address || !pincode || !landmark) {
-    errorBox.innerText = "All fields required ❌";
-    return;
-  }
-
-  if (!/^[0-9]{10}$/.test(phone)) {
-    errorBox.innerText = "Phone must be 10 digits ❌";
-    return;
-  }
-
-  if (phone2 && !/^[0-9]{10}$/.test(phone2)) {
-    errorBox.innerText = "Second phone invalid ❌";
-    return;
-  }
-
-  const user = { name, phone, phone2, address, pincode, landmark };
-
-  localStorage.setItem("user", JSON.stringify(user));
-
-  showToast("Profile updated ✅");
-}
-
-
-
-/* main webpage per wapis jane ke liye */
-function goHome() {
-  window.location.href = "first.html";
-}
-
-/* logout card popup  */
-function showLogout() {
-  const user = JSON.parse(localStorage.getItem("user"));
-
-  document.getElementById("popupName").innerText = user.name;
-  document.getElementById("popupPhone").innerText = user.phone;
-
-  const popup = document.getElementById("logoutPopup");
-  popup.style.display = "flex";
-}
-
-/* popup logout msg close systerm ...*/
-function closePopup() {
-  document.getElementById("logoutPopup").style.display = "none";
-}
-
-// outside click karne per close 
-document.getElementById("logoutPopup").addEventListener("click", function(e){
-  if(e.target.id === "logoutPopup"){
-    closePopup();
-  }
-});
-
-// esc key dawane per close 
-document.addEventListener("keydown", function(e){
-  if(e.key === "Escape") closePopup();
-});
-/* logout system  */
-function logout() {
-  localStorage.removeItem("user");
-
-  showToast("Logout successful ✅");
-
-  setTimeout(() => {
-    window.location.href = "first.html";
-  }, 1200);
-}
-
-document.getElementById("logoutPopup").addEventListener("click", function(e){
-  if(e.target.id === "logoutPopup"){
-    closePopup();
-  }
-});
-
-function closePopup() {
-  const popup = document.getElementById("logoutPopup");
-  popup.style.display = "none";
-}
-
-</script>
+  </script>
 
 </body>
+
 </html>
