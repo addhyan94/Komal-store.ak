@@ -4,13 +4,19 @@
 
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <title>Komal Chand Store</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
+<STYLE>
+
+</STYLE>
+
 <body>
 
-  <!-- Top heder slidebar -->
+  <!-- Top heder slidebar......... -->
   <div class="top-bar" id="top-bar">
     <div class="top-slide-main-box">
       <div class="main-slide-div-box-group">
@@ -28,8 +34,6 @@
 
   <!-- Header -->
   <header class="header">
-    <div id="toast"></div>
-    <div id="toast"></div>
 
     <div class="logo">
       <h3>Komal Journal Store</h3>
@@ -39,29 +43,34 @@
 
     <div class="search">
       <input id="searchInput" type="text" placeholder="Search for products...">
+      <span id="clearSearch" class="clear-search">✖</span>
       <div id="suggestions" class="suggestions"></div>
-      <button>🔍</button>
     </div>
 
-    <div class="actions">
-      <div style="cursor: pointer;" onclick="openOrders()">🚚 My Order</div>
-      <div style="cursor: pointer;" onclick="goToAccount()">👤 Account</div>
+    <div class="actions"></div>
 
-      <!-- Cart Panel ................................... -->
-      <div onclick="goCart()"><button>🛒 Cart</button></div>
-      
-      <!-- <div class="cart-panel" id="cartPanel">
-        <button onclick="toggleCart()" style="float:right;">✖</button>
-        <h2>Your Cart</h2>
-        <div id="cartItems"></div>
+    <div class="nav-icons">
+      <div onclick="goCart()">
+        <i class="fa-solid fa-cart-arrow-down"></i><br>
+        <span>Cart</span>
+      </div>
 
-        <h3>Total: ₹<span id="totalPrice">0</span></h3>
-        <button onclick="clearCart()" class="clear-btn">Clear Cart</button>
-        <button onclick="placeOrder()" class="clear-btn">Place Order</button>
-      </div> -->
+      <div onclick="openOrders()">
+        <!-- <i class="fa-solid fa-dolly"></i><br> -->
+        <i class="fa-solid fa-truck"></i><br>
+        <span>My Orders</span>
+      </div>
+
+      <div onclick="goToAccount()">
+        <i class="fa-solid fa-user"></i><br>
+        <span>Account</span>
+      </div>
+    </div>
+    
   </header>
 
   <!-- Navbar ............................ -->
+
   <nav class="navbar">
     <div class="menu">☰ All Categories</div>
     <ul>
@@ -126,28 +135,55 @@
   </section>
 
   <!-- Footer ....................................-->
-  <footer>
-    <div class="footer">
+
+  <footer class="main-footer">
+    <div class="footer-box-style">
+
       <div>
-        <h3>Komal Chand Journal Store</h3>
-        <p>Your one-stop shop.</p>
+        <h3>Komal Chand Store</h3>
+        <p>Your one-stop shop</p>
       </div>
 
       <div>
         <h4>Quick Links</h4>
-        <p><a href="#top-bar">Home</a></p>
-        <p><a href="#Best-products">Shop</a></p>
-      </div>
+        <p class="Quicklink" onclick="goHome()">Home</p>
+        <p class="Quicklink" onclick="goOrders()">Track Order</p>
+        <p class="Quicklink" onclick="goAccount()">Account</p>
 
-      <div>
-        <h4>Customer Service</h4>
-        <p onclick="openOrders()">Track Order</p>
       </div>
 
       <div>
         <h4>Contact</h4>
-        <p>+91 1234567890</p>
+        <p>+91 9999999999</p>
+        <p>Lalitpur (U.P)</p>
       </div>
+
+    </div>
+
+  </footer>
+
+  <footer>
+    <div class="end-footer">
+
+      <div class="ft-text-items">
+        <img src="Assets/icons-footer/best-product.png">
+        <span>Best Products</span>
+      </div>
+
+      <div class="ft-text-items">
+        <img src="Assets/icons-footer/Advertise.png">
+        <span>Advertise</span>
+      </div>
+
+      <div class="ft-text-items">
+        <img src="Assets/icons-footer/gift-cards.png">
+        <span>Gift Cards</span>
+      </div>
+
+      <div class="ft-text-items ft-card">
+        <img src="Assets/icons-footer/py-cards.png">
+      </div>
+
     </div>
   </footer>
 
@@ -166,10 +202,11 @@
       <button onclick="saveAccount()">Save Details</button>
     </div>
   </div>
-  <!-- day 2 add this line ......................................................... -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script> -->
-  <!-- -------------------------------------------------------------------------------------- -->
+  <div id="popupMsg" class="popup-msg"></div>
+  <div id="errorContainer"></div>
+
   <script src="script.js"></script>
+  <script src="utils.js"></script>
 </body>
 
 </html>
