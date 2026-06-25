@@ -182,13 +182,26 @@ button {
 }
 
 /* Hero */
-.hero {
+/* .hero {
   display: flex;
   justify-content: space-between;
   padding: 50px 5%;
   background: white;
   align-items: center;
+} */
+
+.hero{
+    width: 100%;
+    height: clamp(247px, 27vw, 497px);
 }
+
+.hero img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}  
 
 .hero-left h1 {
   font-size: 42px;
