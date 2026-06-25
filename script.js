@@ -146,15 +146,41 @@ function goCart() {
   window.location.href = "cart.html";
 }
 
+
 /*Scroll Btn Top Shop Now Button */
 
-let topshopbtnn = document.getElementById("top-shop-btn");
-let prdutidsection = document.getElementById("Best-products");
-topshopbtnn.onclick = function () {
-  prdutidsection.scrollIntoView({
-    behavior: "smooth"
-  });
-}
+// let topshopbtnn = document.getElementById("top-shop-btn");
+// let prdutidsection = document.getElementById("Best-products");
+// topshopbtnn.onclick = function () {
+//   prdutidsection.scrollIntoView({
+//     behavior: "smooth"
+//   });
+// }
+
+/* poster sliding banayi hai .. aapne aap poster change hote rhanege  */
+const images = [
+    "Posters/Komal Chand Journal Store Poster..jpg",
+    "Posters/Komal Chand Journal Store Poster 2.jpg"
+];
+
+const heroImage = document.getElementById("heroImage");
+
+let currentIndex = 0;
+
+setInterval(() => {
+
+    heroImage.style.opacity = "0";
+
+    setTimeout(() => {
+
+        currentIndex = (currentIndex + 1) % images.length;
+        heroImage.src = images[currentIndex];
+
+        heroImage.style.opacity = "1";
+
+    }, 500);
+
+}, 6000);/* her 6 sec me image change hogii */
 
 /* Clear button in cart */
 function clearCart() {
