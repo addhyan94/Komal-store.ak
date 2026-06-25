@@ -719,7 +719,6 @@
 
   container.innerHTML = `
   
-  <!-- FULL SAME CODE (NO CHANGE) -->
   <div class="order-popup-card-style">
     <button class="cross-button-style" onclick="closeOrderPopup()">
       <i class="fa-solid fa-xmark"></i>
@@ -777,7 +776,7 @@ function handlePlaceOrder() {
   //   return;
   // }
 
-  // ✅ 1. ORDER SAVE
+  // order save..........
   let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
   const newOrder = {
@@ -786,30 +785,53 @@ function handlePlaceOrder() {
     items: [...cart],
     total: cart.reduce((sum, item) => sum + item.price * item.qty, 0)
   };
+/*new line add ..........*/
+  let productList = "";
+
+newOrder.items.forEach((item, index) => {
+
+  productList += `
+${index + 1}. ${item.name}
+
+Qty : ${item.qty}
+Price : ₹${item.price}
+Total : ₹${item.price * item.qty}
+
+`;
+
+});
+
 
   orders.unshift(newOrder);
   localStorage.setItem("orders", JSON.stringify(orders));
 
-  // ✅ 2. WHATSAPP OPEN
-  const msg = `Hello Komal Chand Store 👋
+  // whatsapp order and ditels
+  const msg =  `🛍️ NEW ORDER RECEIVED
+━━━━━━━━━━━━━━━━━━━━━━
+🆔 Order ID : ${newOrder.id}
+📅 Date : ${newOrder.date}
 
-I'm ${user.name}
-
-📞 Phone: ${user.phone}
-📍 Address: ${user.address}
-
-I have placed an order. Please confirm.
+👤 Customer : ${user.name}
+📞 Phone : ${user.phone}
+📍 Address : ${user.address}
+━━━━━━━━━━━━━━━━━━━━━━
+🛒 ORDER ITEMS
+${productList}
+━━━━━━━━━━━━━━━━━━━━━━
+💰 Total Amount : ₹${newOrder.total}
+━━━━━━━━━━━━━━━━━━━━━━
+Please confirm this order.
 
 Thank you 😊`;
 /*................................Number add akrna hai ...........................................................*/
-  window.open("https://wa.me/91xxxxxxxxxx?text=" + encodeURIComponent(msg));
+  window.open("https://wa.me/919129840369?text=" + encodeURIComponent(msg));
 
-  // ✅ 3. CART CLEAR
+// cart clear function
   cart = [];
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
 
-  // ✅ 4. POPUP SHOW
+  // popup show call 
   showOrderPopup();
 }
   </script>
