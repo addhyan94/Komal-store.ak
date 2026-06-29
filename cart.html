@@ -572,7 +572,7 @@
         </div>
 
         <!-- <button class="place-btn">Place Order</button> -->
-        <button class="place-btn" onclick="handlePlaceOrder()">Place Order</button>
+        <button class="place-btn" id="placeOrderBtn" onclick="handlePlaceOrder()">Place Order</button>
       </div>
     </div>
 
@@ -719,6 +719,7 @@
 
   container.innerHTML = `
   
+  <!-- FULL SAME CODE (NO CHANGE) -->
   <div class="order-popup-card-style">
     <button class="cross-button-style" onclick="closeOrderPopup()">
       <i class="fa-solid fa-xmark"></i>
@@ -754,14 +755,12 @@ function closeOrderPopup() {
 }
 
 
-
-
-
-function handlePlaceOrder() {
+/* pura place order handle yaha ho rhaha*/
+async function handlePlaceOrder() {
 
   const user = JSON.parse(localStorage.getItem("user"));
 
-    if (cart.length === 0) {
+  if (cart.length === 0) {
     showError("Please select product then place order 🛒 Go to Home");
     return;
   }
@@ -771,69 +770,102 @@ function handlePlaceOrder() {
     return;
   }
 
-  // if (cart.length === 0) {
-  //   showError("Cart is empty 🛒");
-  //   return;
-  // }
-
-  // order save..........
   let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
   const newOrder = {
     id: Date.now(),
     date: new Date().toLocaleDateString(),
+
+    user: {
+      name: user.name,
+      phone: user.phone,
+      address: user.address
+    },
+
     items: [...cart],
-    total: cart.reduce((sum, item) => sum + item.price * item.qty, 0)
+
+    total: cart.reduce(
+      (sum, item) => sum + item.price * item.qty,
+      0
+    )
   };
-/*new line add ..........*/
-  let productList = "";
-
-newOrder.items.forEach((item, index) => {
-
-  productList += `
-${index + 1}. ${item.name}
-
-Qty : ${item.qty}
-Price : ₹${item.price}
-Total : ₹${item.price * item.qty}
-
-`;
-
-});
-
 
   orders.unshift(newOrder);
   localStorage.setItem("orders", JSON.stringify(orders));
 
-  // whatsapp order and ditels
-  const msg =  `🛍️ NEW ORDER RECEIVED
-━━━━━━━━━━━━━━━━━━━━━━
-🆔 Order ID : ${newOrder.id}
-📅 Date : ${newOrder.date}
+//   try {
 
-👤 Customer : ${user.name}
-📞 Phone : ${user.phone}
-📍 Address : ${user.address}
-━━━━━━━━━━━━━━━━━━━━━━
-🛒 ORDER ITEMS
-${productList}
-━━━━━━━━━━━━━━━━━━━━━━
-💰 Total Amount : ₹${newOrder.total}
-━━━━━━━━━━━━━━━━━━━━━━
-Please confirm this order.
+//     const response = await fetch(
+//       "http://localhost:3000/place-order",
+//       {
+//         method: "POST",
 
-Thank you 😊`;
-/*................................Number add akrna hai ...........................................................*/
-  window.open("https://wa.me/919129840369?text=" + encodeURIComponent(msg));
+//         headers: {
+//           "Content-Type": "application/json"
+//         },
 
-// cart clear function
+//         body: JSON.stringify(newOrder)
+//       }
+//     );
+
+//     const result = await response.json();
+
+//     if (!result.success) {
+//       throw new Error();
+//     }
+
+//     cart = [];
+//     localStorage.setItem("cart", JSON.stringify(cart));
+
+//     renderCart();
+
+//     showOrderPopup();
+
+//   } catch (err) {
+
+//     showError(
+//       "Failed to send order ❌"
+//     );
+
+//   }
+  
+// }
+
+// 
+
+try {
+
+  const response = await fetch(
+    "http://localhost:3000/place-order",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newOrder)
+    }
+  );
+
+  const result = await response.json();
+
+  if (!result.success) {
+    throw new Error();
+  }
+
   cart = [];
   localStorage.setItem("cart", JSON.stringify(cart));
+
   renderCart();
 
-  // popup show call 
   showOrderPopup();
-}
+
+} catch (err) {
+
+  console.error(err);
+
+  showError("Failed to send order ❌ - Server Down");
+
+}}
   </script>
 
 </body>
