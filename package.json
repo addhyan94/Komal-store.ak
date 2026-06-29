@@ -1,0 +1,29 @@
+{
+  "name": "komal-store.ak",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/addhyan94/Komal-store.ak.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/addhyan94/Komal-store.ak/issues"
+  },
+  "homepage": "https://github.com/addhyan94/Komal-store.ak#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "helmet": "^8.2.0",
+    "nodemailer": "^9.0.1"
+  }
+}
