@@ -203,8 +203,9 @@
       cursor: pointer;
     }
 
-    /* bottom nav: hidden by default (desktop), shown only inside the mobile media query below */
-    .mobile-bottom-nav { display:none; }
+    .mobile-bottom-nav {
+      display: none;
+    }
 
     @media(max-width:768px) {
       .container {
@@ -274,278 +275,288 @@
     .ft-card img {
       width: 250px;
     }
-    html, body {
-  height: 100%;
-}
 
-.page-content {
-  min-height: calc(100vh - 200px); 
-}
+    html,
+    body {
+      height: 100%;
+    }
 
-     .order-popup-card-style {
-            overflow: hidden;
-            position: relative;
-            text-align: left;
-            border-radius: 0.5rem;
-            max-width: 290px;
-            box-shadow: 10px 20px 25px 6px rgba(0, 0, 0, 0.1), -7px -2px 10px 20px rgba(0, 0, 0, 0.04);
-            background-color: #f9f5f5;
-        }
+    .page-content {
+      min-height: calc(100vh - 200px);
+    }
 
-        .cross-button-style {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.5rem 1rem;
-            background-color: #fff;
-            color: black;
-            border: 2px solid #D1D5DB;
-            font-size: 1rem;
-            font-weight: 300;
-            width: 30px;
-            height: 30px;
-            border-radius: 7px;
-            transition: .3s ease;
-        }
+    .order-popup-card-style {
+      overflow: hidden;
+      position: relative;
+      text-align: left;
+      border-radius: 0.5rem;
+      max-width: 290px;
+      box-shadow: 10px 20px 25px 6px rgba(0, 0, 0, 0.1), -7px -2px 10px 20px rgba(0, 0, 0, 0.04);
+      background-color: #f9f5f5;
+    }
 
-        .cross-button-style:hover {
-            background-color: #ee0d0d;
-            border: 2px solid #ee0d0d;
-            color: #fff;
-        }
+    .cross-button-style {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      background-color: #fff;
+      color: black;
+      border: 2px solid #D1D5DB;
+      font-size: 1rem;
+      font-weight: 300;
+      width: 30px;
+      height: 30px;
+      border-radius: 7px;
+      transition: .3s ease;
+    }
 
-        .popup-card-header-style {
-           padding: 2.25rem 2rem 2rem 2rem;
-        }
+    .cross-button-style:hover {
+      background-color: #ee0d0d;
+      border: 2px solid #ee0d0d;
+      color: #fff;
+    }
 
-        .tick-timage-style {
-            display: flex;
-            margin-left: auto;
-            margin-right: auto;
-            background-color: #e2feee;
-            flex-shrink: 0;
-            justify-content: center;
-            align-items: center;
-            width: 3rem;
-            height: 3rem;
-            border-radius: 9999px;
-            animation: cross-button-animate .6s linear alternate-reverse infinite;
-            transition: .6s ease;
-        }
+    .popup-card-header-style {
+      padding: 2.25rem 2rem 2rem 2rem;
+    }
 
-        .tick-timage-style svg {
-            color: #0afa2a;
-            width: 2rem;
-            height: 2rem;
-        }
+    .tick-timage-style {
+      display: flex;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #e2feee;
+      flex-shrink: 0;
+      justify-content: center;
+      align-items: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 9999px;
+      animation: cross-button-animate .6s linear alternate-reverse infinite;
+      transition: .6s ease;
+    }
 
-        .card-text-items {
-            margin-top: 0.75rem;
-            text-align: center;
-        }
+    .tick-timage-style svg {
+      color: #0afa2a;
+      width: 2rem;
+      height: 2rem;
+    }
 
-        .card-titel-text {
-            color: #066e29;
-            font-size: 1rem;
-            font-weight: 600;
-            line-height: 1.5rem;
-        }
+    .card-text-items {
+      margin-top: 0.75rem;
+      text-align: center;
+    }
 
-        .card-main-text-message {
-            margin-top: 0.5rem;
-            color: #595b5f;
-            font-size: 0.875rem;
-            line-height: 1.25rem;
-        }
+    .card-titel-text {
+      color: #066e29;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.5rem;
+    }
 
-        .card-buttons-style {
-            margin: 0.75rem 1rem;
-        }
+    .card-main-text-message {
+      margin-top: 0.5rem;
+      color: #595b5f;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+    }
+
+    .card-buttons-style {
+      margin: 0.75rem 1rem;
+    }
 
 
-        .Continue-shoping-button-style {
-            display: inline-flex;
-            padding: 0.5rem 1rem;
-            background-color: #1aa06d;
-            color: #ffffff;
-            font-size: 1rem;
-            line-height: 1.5rem;
-            font-weight: 500;
-            justify-content: center;
-            width: 100%;
-            border-radius: 0.375rem;
-            border: none;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-        }
+    .Continue-shoping-button-style {
+      display: inline-flex;
+      padding: 0.5rem 1rem;
+      background-color: #1aa06d;
+      color: #ffffff;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      font-weight: 500;
+      justify-content: center;
+      width: 100%;
+      border-radius: 0.375rem;
+      border: none;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
 
-        .Continue-shoping-button-style:hover {
-            background-color: #0a6f48;
-            transition: .3s ease;
-            animation: cross-button-animate .7s linear alternate-reverse infinite;
+    .Continue-shoping-button-style:hover {
+      background-color: #0a6f48;
+      transition: .3s ease;
+      animation: cross-button-animate .7s linear alternate-reverse infinite;
 
-        }
+    }
 
-        .go-to-order-button-style:hover {
+    .go-to-order-button-style:hover {
 
-            background-color: #dbdbdbfc;
-            animation: cross-button-animate .8s linear alternate-reverse infinite;
-        }
+      background-color: #dbdbdbfc;
+      animation: cross-button-animate .8s linear alternate-reverse infinite;
+    }
 
-        .go-to-order-button-style {
-            display: inline-flex;
-            margin-top: 0.75rem;
-            padding: 0.5rem 1rem;
-            color: #242525;
-            font-size: 1rem;
-            line-height: 1.5rem;
-            font-weight: 500;
-            justify-content: center;
-            width: 100%;
-            border-radius: 0.375rem;
-            border: 1px solid #D1D5DB;
-            background-color: #fff;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-        }
+    .go-to-order-button-style {
+      display: inline-flex;
+      margin-top: 0.75rem;
+      padding: 0.5rem 1rem;
+      color: #242525;
+      font-size: 1rem;
+      line-height: 1.5rem;
+      font-weight: 500;
+      justify-content: center;
+      width: 100%;
+      border-radius: 0.375rem;
+      border: 1px solid #D1D5DB;
+      background-color: #fff;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
 
-        @keyframes cross-button-animate {
-            from {
-                transform: scale(1);
-            }
+    @keyframes cross-button-animate {
+      from {
+        transform: scale(1);
+      }
 
-            to {
-                transform: scale(1.09);
-            }
-        }
+      to {
+        transform: scale(1.09);
+      }
+    }
 
-         #errorContainer {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+    #errorContainer {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-        .error-card-main-div {
-            width: 330px;
-            height: 80px;
-            border-radius: 8px;
-            box-sizing: border-box;
-            padding: 10px 15px;
-            background-color: #ffffff;
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            gap: 15px;
-        }
+    .error-card-main-div {
+      width: 330px;
+      height: 80px;
+      border-radius: 8px;
+      box-sizing: border-box;
+      padding: 10px 15px;
+      background-color: #ffffff;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 15px;
+    }
 
-        .left-side-wave-style {
-            position: absolute;
-            transform: rotate(90deg);
-            left: -31px;
-            top: 32px;
-            width: 80px;
-            fill: #fc0c0c3a;
-        }
+    .left-side-wave-style {
+      position: absolute;
+      transform: rotate(90deg);
+      left: -31px;
+      top: 32px;
+      width: 80px;
+      fill: #fc0c0c3a;
+    }
 
-        .main-icon-containor-box {
-            width: 35px;
-            height: 35px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #fc0c0c48;
-            border-radius: 50%;
-            margin-left: 8px;
-        }
+    .main-icon-containor-box {
+      width: 35px;
+      height: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fc0c0c48;
+      border-radius: 50%;
+      margin-left: 8px;
+    }
 
-        .main-icon-hhhh {
-            width: 17px;
-            height: 17px;
-            color: #d10d0d;
-        }
+    .main-icon-hhhh {
+      width: 17px;
+      height: 17px;
+      color: #d10d0d;
+    }
 
-        .msg-text-continour-box {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            flex-grow: 1;
-        }
+    .msg-text-continour-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      flex-grow: 1;
+    }
 
-        .msg-txt-test,
-        .msg-sub-txt-text {
-            margin: 0;
-            cursor: default;
-        }
+    .msg-txt-test,
+    .msg-sub-txt-text {
+      margin: 0;
+      cursor: default;
+    }
 
-        .msg-txt-test {
-            color: #d10d0d;
-            font-size: 17px;
-            font-weight: 700;
-        }
+    .msg-txt-test {
+      color: #d10d0d;
+      font-size: 17px;
+      font-weight: 700;
+    }
 
-        .msg-sub-txt-text {
-            font-size: 14px;
-            color: #555;
-        }
+    .msg-sub-txt-text {
+      font-size: 14px;
+      color: #555;
+    }
 
-        .main-cross-icon-sign {
-            width: 18px;
-            height: 18px;
-            color: #555;
-            cursor: pointer;
-        }
+    .main-cross-icon-sign {
+      width: 18px;
+      height: 18px;
+      color: #555;
+      cursor: pointer;
+    }
 
-    /* ==========================================================================
-       MOBILE VIEW FIX (max-width:768px) — matches the provided screenshot.
-       Desktop styles above are untouched. These rules only re-skin things
-       for small screens using the SAME html/js structure already in the page.
-    ========================================================================== */
-    @media (max-width:768px){
-
-      /* ---------- Top header: "< CART" ---------- */
+    @media (max-width:768px) {
       .header {
         padding: 14px 16px;
         position: relative;
       }
+
       .header .logo {
-        font-size: 0; /* hide "Komal Store" text, replaced visually below */
-        display:flex;
-        align-items:center;
-        gap:10px;
+        font-size: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
+
       .header .logo::before {
-        content: "\f060"; /* fa-arrow-left */
+        content: "\f060";
         font-family: "Font Awesome 6 Free";
         font-weight: 900;
         font-size: 18px;
-        color:#222;
+        color: #222;
       }
+
       .header .logo::after {
         content: "CART";
         font-size: 16px;
         font-weight: 700;
         letter-spacing: .5px;
-        color:#222;
+        color: #222;
       }
+
       .header .progress,
-      .header .nav-icons { display:none; } /* progress steps + top nav icons hidden on mobile, shown at bottom instead */
+      .header .nav-icons {
+        display: none;
+      }
+      .page-content {
+        min-height: calc(100vh - 130px);
+      }
 
-      /* ---------- Layout ---------- */
-      .page-content { min-height: calc(100vh - 130px); }
-      .container { padding: 12px 12px 90px; gap: 0; }
-      .left { flex: unset; }
-      .breadcrumb, .section-title { display:none; }
+      .container {
+        padding: 12px 12px 90px;
+        gap: 0;
+      }
 
-      /* ---------- Product cards ---------- */
+      .left {
+        flex: unset;
+      }
+
+      .breadcrumb,
+      .section-title {
+        display: none;
+      }
       .card {
         border: none;
         border-bottom: 1px solid #eee;
@@ -555,160 +566,207 @@
         display: flex;
         flex-direction: column;
       }
-      .card .remove { order: 2; }
-      .card .product { order: 1; }
-      .product { gap: 14px; }
+
+      .card .remove {
+        order: 2;
+      }
+
+      .card .product {
+        order: 1;
+      }
+
+      .product {
+        gap: 14px;
+      }
+
       .product img {
         width: 90px;
         height: 90px;
         object-fit: contain;
-        background:#f7f5f8;
+        background: #f7f5f8;
         border-radius: 8px;
         padding: 6px;
       }
+
       .details h4 {
         font-size: 14px;
         font-weight: 600;
         margin-bottom: 6px;
       }
+
       .price {
         font-size: 15px;
         font-weight: 700;
-        margin-top:0;
-        display:flex;
-        align-items:center;
-        gap:8px;
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
       }
+
       .details p {
         font-size: 12px;
-        color:#666;
+        color: #666;
         margin: 8px 0 4px;
       }
+
       .qty {
-        display:inline-flex;
-        align-items:center;
-        gap:6px;
-        background:#f3f3f3;
-        border-radius:14px;
-        padding:4px 10px;
-        font-size:13px;
-        margin-top:8px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #f3f3f3;
+        border-radius: 14px;
+        padding: 4px 10px;
+        font-size: 13px;
+        margin-top: 8px;
       }
+
       .qty button {
         font-size: 14px;
         padding: 0 4px;
-        color:#333;
-      }
-      .remove {
-        float:none;
-        margin-top:12px;
-        display:block;
-        text-align:center;
-        background:#fbe7ee;
-        color:#e91e63;
-        font-weight:700;
-        font-size:13px;
-        padding:9px 0;
-        border-radius:6px;
+        color: #333;
       }
 
-      /* ---------- Continue shopping row ---------- */
+      .remove {
+        float: none;
+        margin-top: 12px;
+        display: block;
+        text-align: center;
+        background: #fbe7ee;
+        color: #e91e63;
+        font-weight: 700;
+        font-size: 13px;
+        padding: 9px 0;
+        border-radius: 6px;
+      }
       .continue-shopping-row {
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        padding:16px 4px;
-        font-size:14px;
-        font-weight:600;
-        color:#222;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 4px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #222;
         border-bottom: 1px solid #eee;
       }
-      .continue-shopping-row i.fa-heart { color:#222; font-size:15px; }
-      .continue-shopping-row i.fa-chevron-right { color:#999; font-size:13px; }
 
-      /* ---------- Price details / summary ---------- */
+      .continue-shopping-row i.fa-heart {
+        color: #222;
+        font-size: 15px;
+      }
+
+      .continue-shopping-row i.fa-chevron-right {
+        color: #999;
+        font-size: 13px;
+      }
       .right {
         position: static;
         width: auto;
         flex: unset;
         margin-top: 4px;
       }
+
       .summary {
         border: none;
         border-radius: 0;
         padding: 16px 4px;
-        box-shadow:none;
+        box-shadow: none;
       }
+
       .summary h3 {
         font-size: 14px;
-        font-weight:700;
-        margin-bottom:14px;
-      }
-      .row { font-size: 13px; color:#555; margin:9px 0; }
-      .row.total { font-size:15px; font-weight:700; color:#111; }
-      .green { color:#1aa06d; }
-      .offer {
-        background:#d9f7e6;
-        color:#127a3f;
-        font-weight:600;
-        font-size:13px;
+        font-weight: 700;
         margin-bottom: 14px;
       }
+
+      .row {
+        font-size: 13px;
+        color: #555;
+        margin: 9px 0;
+      }
+
+      .row.total {
+        font-size: 15px;
+        font-weight: 700;
+        color: #111;
+      }
+
+      .green {
+        color: #1aa06d;
+      }
+
+      .offer {
+        background: #d9f7e6;
+        color: #127a3f;
+        font-weight: 600;
+        font-size: 13px;
+        margin-bottom: 14px;
+      }
+
       .place-btn {
-        background:#0c8a8f !important;
+        background: #0c8a8f !important;
         padding: 14px;
         border-radius: 8px;
         font-size: 15px;
-        font-weight:700;
-        margin-top:0;
+        font-weight: 700;
+        margin-top: 0;
       }
-
-      /* ---------- Footers hidden on mobile, replaced by bottom nav ---------- */
-      .main-footer, .end-footer { display:none; }
-
-      /* ---------- Fixed bottom nav (Home / My Orders / Categories / Account / Cart) ---------- */
+      .main-footer,
+      .end-footer {
+        display: none;
+      }
       .mobile-bottom-nav {
-        display:flex;
-        position:fixed;
-        bottom:0;
-        left:0;
-        width:100%;
-        background:#fff;
-        border-top:1px solid #eee;
-        justify-content:space-around;
-        align-items:center;
-        padding:8px 4px 10px;
-        z-index:999;
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        border-top: 1px solid #eee;
+        justify-content: space-around;
+        align-items: center;
+        padding: 8px 4px 10px;
+        z-index: 999;
       }
+
       .mobile-bottom-nav .m-nav-item {
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        gap:3px;
-        font-size:11px;
-        font-weight:600;
-        color:#888;
-        cursor:pointer;
-        position:relative;
-        padding:2px 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        font-size: 11px;
+        font-weight: 600;
+        color: #888;
+        cursor: pointer;
+        position: relative;
+        padding: 2px 6px;
       }
-      .mobile-bottom-nav .m-nav-item i { font-size:18px; }
-      .mobile-bottom-nav .m-nav-item.active { color:#1a4fe8; }
-      .mobile-bottom-nav .cart-icon-wrap { position:relative; }
+
+      .mobile-bottom-nav .m-nav-item i {
+        font-size: 18px;
+      }
+
+      .mobile-bottom-nav .m-nav-item.active {
+        color: #1a4fe8;
+      }
+
+      .mobile-bottom-nav .cart-icon-wrap {
+        position: relative;
+      }
+
       .mobile-bottom-nav .m-nav-badge {
-        position:absolute;
-        top:-6px;
-        right:-9px;
-        background:#e02424;
-        color:#fff;
-        font-size:9px;
-        font-weight:700;
-        border-radius:50%;
-        width:15px;
-        height:15px;
-        display:flex;
-        align-items:center;
-        justify-content:center;
+        position: absolute;
+        top: -6px;
+        right: -9px;
+        background: #e02424;
+        color: #fff;
+        font-size: 9px;
+        font-weight: 700;
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   </style>
@@ -716,85 +774,76 @@
 
 <body>
   <div id="errorContainer"></div>
-    <div id="popupMsg" class="popup-msg"></div>
-<div class="page-content">
-  <div class="header">
-    <div class="logo">Komal Store</div>
+  <div id="popupMsg" class="popup-msg"></div>
+  <div class="page-content">
+    <div class="header">
+      <div class="logo">Komal Store</div>
+      <div class="progress">
+        <div class="step active"><span class="progree-bar-number active">1</span><br><span>Cart</span></div>
+        <div class="line"></div>
+        <div class="step"><span class="progree-bar-number">2</span><br><span>Order</span></div>
+      </div>
 
+      <div class="nav-icons">
+        <div onclick="goHome()">
+          <i class="fa-solid fa-house"></i><br>
+          <span>Home</span>
+        </div>
 
-    <div class="progress">
-      <div class="step active"><span class="progree-bar-number active">1</span><br><span>Cart</span></div>
-      <div class="line"></div>
-      <div class="step"><span class="progree-bar-number">2</span><br><span>Order</span></div>
-    </div>
+        <div onclick="goOrders()">
+          <i class="fa-solid fa-truck"></i><br>
+          <span>My Orders</span>
+        </div>
 
-   <div class="nav-icons">
-  <div onclick="goHome()">
-    <i class="fa-solid fa-house"></i><br>
-    <span>Home</span>
-  </div>
-
-  <div onclick="goOrders()">
-    <!-- <i class="fa-solid fa-dolly"></i><br> -->
-    <i class="fa-solid fa-truck"></i><br>
-    <span>My Orders</span>
-  </div>
-
-  <div onclick="goAccount()">
-    <i class="fa-solid fa-user"></i><br>
-    <span>Account</span>
-  </div>
-</div>
-  </div>
-  <div class="container">
-
-    
-    <div class="left">
-      <div class="breadcrumb">Home > My Cart</div>
-      <div class="section-title">Product Details</div>
-
-      <div id="cartItems"></div>
-
-      <!-- mobile-only row, hidden on desktop via CSS (only relevant <768px) -->
-      <div class="continue-shopping-row" onclick="goHome()">
-        <span><i class="fa-regular fa-heart"></i>&nbsp;&nbsp;Continue Shopping</span>
-        <i class="fa-solid fa-chevron-right"></i>
+        <div onclick="goAccount()">
+          <i class="fa-solid fa-user"></i><br>
+          <span>Account</span>
+        </div>
       </div>
     </div>
+    <div class="container">
 
-   
-    <div class="right">
-      <div class="summary">
-        <h3 id="priceDetailsTitle">Price Details</h3>
 
-        <div class="row">
-          <span>Product Price</span>
-          <span>+ ₹<span id="subtotal">0</span></span>
+      <div class="left">
+        <div class="breadcrumb">Home > My Cart</div>
+        <div class="section-title">Product Details</div>
+
+        <div id="cartItems"></div>
+        <div class="continue-shopping-row" onclick="goHome()">
+          <span><i class="fa-regular fa-heart"></i>&nbsp;&nbsp;Continue Shopping</span>
+          <i class="fa-solid fa-chevron-right"></i>
         </div>
-
-        <div class="row green">
-          <span>Total Discounts</span>
-          <span>- ₹100</span>
-        </div>
-
-        <hr>
-
-        <div class="row total">
-          <span>Order Total</span>
-          <span>₹<span id="total">0</span></span>
-        </div>
-
-        <div class="offer">
-          Yay! Your total discount is ₹100
-        </div>
-
-        <!-- <button class="place-btn">Place Order</button> -->
-        <button class="place-btn" id="placeOrderBtn" onclick="handlePlaceOrder()">Place Order</button>
       </div>
-    </div>
+      <div class="right">
+        <div class="summary">
+          <h3 id="priceDetailsTitle">Price Details</h3>
 
+          <div class="row">
+            <span>Product Price</span>
+            <span>+ ₹<span id="subtotal">0</span></span>
+          </div>
+
+          <div class="row green">
+            <span>Total Discounts</span>
+            <span>- ₹100</span>
+          </div>
+
+          <hr>
+
+          <div class="row total">
+            <span>Order Total</span>
+            <span>₹<span id="total">0</span></span>
+          </div>
+
+          <div class="offer">
+            Yay! Your total discount is ₹100
+          </div>
+          <button class="place-btn" id="placeOrderBtn" onclick="handlePlaceOrder()">Place Order</button>
+        </div>
+      </div>
+
+    </div>
   </div>
-</div>
   <footer class="main-footer">
     <div class="footer-box-style">
 
@@ -845,8 +894,6 @@
 
     </div>
   </footer>
-
-  <!-- mobile-only fixed bottom nav, hidden on desktop -->
   <div class="mobile-bottom-nav">
     <div class="m-nav-item active" onclick="goHome()">
       <i class="fa-solid fa-house"></i>
@@ -873,10 +920,10 @@
     </div>
   </div>
 
- <div id="orderPopupContainer"
-        style="position:fixed; top:0; left:0; width:100%; height:100%; display:none; justify-content:center; align-items:center; background:rgba(0,0,0,0.5); z-index:9999;">
-    </div>
-    <script src="utils.js"></script>
+  <div id="orderPopupContainer"
+    style="position:fixed; top:0; left:0; width:100%; height:100%; display:none; justify-content:center; align-items:center; background:rgba(0,0,0,0.5); z-index:9999;">
+  </div>
+  <script src="utils.js"></script>
   <script>
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -970,9 +1017,9 @@
     }
 
     function showOrderPopup() {
-  const container = document.getElementById("orderPopupContainer");
+      const container = document.getElementById("orderPopupContainer");
 
-  container.innerHTML = `
+      container.innerHTML = `
   
   <!-- FULL SAME CODE (NO CHANGE) -->
   <div class="order-popup-card-style">
@@ -1000,127 +1047,83 @@
   </div>
   `;
 
-  container.style.display = "flex";
-}
-
-
-
-function closeOrderPopup() {
-  document.getElementById("orderPopupContainer").style.display = "none";
-}
-
-
-/* pura place order handle yaha ho rhaha*/
-async function handlePlaceOrder() {
-
-  const user = JSON.parse(localStorage.getItem("user"));
-
-  if (cart.length === 0) {
-    showError("Please select product then place order 🛒 Go to Home");
-    return;
-  }
-
-  if (!user) {
-    showError("Please create account first ❌");
-    return;
-  }
-
-  let orders = JSON.parse(localStorage.getItem("orders")) || [];
-
-  const newOrder = {
-    id: Date.now(),
-    date: new Date().toLocaleDateString(),
-
-    user: {
-      name: user.name,
-      phone: user.phone,
-      address: user.address
-    },
-
-    items: [...cart],
-
-    total: cart.reduce(
-      (sum, item) => sum + item.price * item.qty,
-      0
-    )
-  };
-
-  orders.unshift(newOrder);
-  localStorage.setItem("orders", JSON.stringify(orders));
-
-//   try {
-
-//     const response = await fetch(
-//       "http://localhost:3000/place-order",
-//       {
-//         method: "POST",
-
-//         headers: {
-//           "Content-Type": "application/json"
-//         },
-
-//         body: JSON.stringify(newOrder)
-//       }
-//     );
-
-//     const result = await response.json();
-
-//     if (!result.success) {
-//       throw new Error();
-//     }
-
-//     cart = [];
-//     localStorage.setItem("cart", JSON.stringify(cart));
-
-//     renderCart();
-
-//     showOrderPopup();
-
-//   } catch (err) {
-
-//     showError(
-//       "Failed to send order ❌"
-//     );
-
-//   }
-  
-// }
-
-// 
-
-try {
-
-  const response = await fetch(
-    "http://localhost:3000/place-order",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(newOrder)
+      container.style.display = "flex";
     }
-  );
+    function closeOrderPopup() {
+      document.getElementById("orderPopupContainer").style.display = "none";
+    }
 
-  const result = await response.json();
+    async function handlePlaceOrder() {
 
-  if (!result.success) {
-    throw new Error();
-  }
+      const user = JSON.parse(localStorage.getItem("user"));
 
-  cart = [];
-  localStorage.setItem("cart", JSON.stringify(cart));
+      if (cart.length === 0) {
+        showError("Please select product then place order 🛒 Go to Home");
+        return;
+      }
 
-  renderCart();
+      if (!user) {
+        showError("Please create account first ❌");
+        return;
+      }
 
-  showOrderPopup();
+      let orders = JSON.parse(localStorage.getItem("orders")) || [];
 
-} catch (err) {
+      const newOrder = {
+        id: Date.now(),
+        date: new Date().toLocaleDateString(),
 
-  console.error(err);
+        user: {
+          name: user.name,
+          phone: user.phone,
+          address: user.address
+        },
 
-  showError("Failed to send order ❌ - Server Down");
+        items: [...cart],
 
-}}
+        total: cart.reduce(
+          (sum, item) => sum + item.price * item.qty,
+          0
+        )
+      };
+
+      orders.unshift(newOrder);
+      localStorage.setItem("orders", JSON.stringify(orders));
+
+      try {
+
+        const response = await fetch(
+          "http://localhost:3000/place-order",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newOrder)
+          }
+        );
+
+        const result = await response.json();
+
+        if (!result.success) {
+          throw new Error();
+        }
+
+        cart = [];
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        renderCart();
+
+        showOrderPopup();
+
+      } catch (err) {
+
+        console.error(err);
+
+        showError("Failed to send order ❌ - Server Down");
+
+      }
+    }
   </script>
 
 </body>
