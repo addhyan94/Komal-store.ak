@@ -9,14 +9,8 @@
   <title>Komal Chand Store</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
-<STYLE>
-
-</STYLE>
-
 <body>
 
-  <!-- Top heder slidebar......... -->
   <div class="top-bar" id="top-bar">
     <div class="top-slide-main-box">
       <div class="main-slide-div-box-group">
@@ -32,15 +26,12 @@
     </div>
   </div>
 
-  <!-- Header -->
   <header class="header">
 
     <div class="logo">
       <h3>Komal Journal Store</h3>
       <span>Rawarpura, Lalitpur (U.P)</span>
     </div>
-    <!-- Sarch system ......................  -->
-
     <div class="search">
       <input id="searchInput" type="text" placeholder="Search for products...">
       <span id="clearSearch" class="clear-search">✖</span>
@@ -51,24 +42,23 @@
 
     <div class="nav-icons">
       <div onclick="goCart()">
-        <i class="fa-solid fa-cart-arrow-down"></i><br>
+        <i fetchpriority="high" class="fa-solid fa-cart-arrow-down"></i><br>
         <span>Cart</span>
       </div>
 
       <div onclick="openOrders()">
-        <!-- <i class="fa-solid fa-dolly"></i><br> -->
-        <i class="fa-solid fa-truck"></i><br>
+        <i fetchpriority="high" class="fa-solid fa-truck"></i><br>
         <span>My Orders</span>
       </div>
 
       <div onclick="goToAccount()">
-        <i class="fa-solid fa-user"></i><br>
+        <i fetchpriority="high" class="fa-solid fa-user"></i><br>
         <span>Account</span>
       </div>
     </div>
     
   </header>
-
+  
   <!-- Navbar ............................ -->
 
   <nav class="navbar">
@@ -84,7 +74,7 @@
 
   <!-- Hero section ................................ -->
     <section class="hero">
-      <img id="heroImage" src="Posters/Komal Chand Journal Store Poster..jpg" alt="Poster">
+      <img id="heroImage" src="Posters/Komal Chand Journal Store Poster..jpg" fetchpriority="high" alt="Poster">
     </section>
   <!-- Features Section .....................  -->
   <section class="features">
