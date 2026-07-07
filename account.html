@@ -4,15 +4,21 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+  <link rel="stylesheet" href="botum-menu.css">
   <title>My Account</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       background: #f1f3f6;
       font-family: 'Poppins', sans-serif;
       margin: 0px;
+      color: #222;
     }
 
     .menu-item {
@@ -41,6 +47,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
     }
 
     .home-btn {
@@ -65,23 +72,69 @@
       cursor: pointer;
     }
 
-    .account-container {
-      width: 80%;
-      margin: 40px auto;
+    .header-search {
+      flex: 1;
+      max-width: 560px;
       display: flex;
-      gap: 20px;
+      align-items: center;
+      background: #fff;
+      border-radius: 5px;
+      overflow: hidden;
     }
 
-    /* Sidebar sectiomn ...................... */
+    .header-search input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 9px 14px;
+      font-size: 13px;
+      color: #333;
+    }
+
+    .header-search button {
+      background: #fff;
+      border: none;
+      padding: 0 14px;
+      cursor: pointer;
+      color: #0c8a8f;
+      display: flex;
+      align-items: center;
+    }
+
+    .breadcrumb {
+      padding: 12px 10%;
+      font-size: 13px;
+      color: #666;
+      background: #f1f3f6;
+    }
+
+    .breadcrumb a {
+      color: #666;
+      text-decoration: none;
+    }
+
+    .breadcrumb .current {
+      color: #222;
+    }
+
+    .account-container {
+      width: 80%;
+      margin: 10px auto 40px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
     .account-sidebar {
       width: 25%;
       background: white;
       border-radius: 10px;
       padding: 20px;
+      height: 19em;
     }
 
     .account-sidebar div {
-      padding: 12px;
+      padding: 20px 5px;
       cursor: pointer;
     }
 
@@ -89,37 +142,81 @@
       background: #f5f5f5;
     }
 
-    /* Content section,,,,,,,,,,,,,,,,,,,,,,, */
     .account-content {
-      width: 75%;
+      width: 101%;
       background: white;
       border-radius: 10px;
       padding: 25px;
+    }
+
+    .account-content h2 {
+      font-size: 18px;
+      margin-bottom: 18px;
     }
 
     .account-box p {
       margin: 10px 0;
     }
 
-    .account-content input {
+    .account-content input,
+    .account-content select {
       display: block;
       width: 100%;
-      padding: 10px;
-      margin-bottom: 12px;
+      padding: 10px 12px;
+      margin-bottom: 16px;
       border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 13px;
+      font-family: inherit;
+      color: #333;
+      outline: none;
+    }
+
+    .account-content input::placeholder {
+      color: #aaa;
+    }
+
+    .account-content input:focus,
+    .account-content select:focus {
+      border-color: #0c8a8f;
+    }
+
+    .account-content input[readonly] {
+      background: #fafafa;
+      color: #777;
+      cursor: default;
     }
 
     .account-content label {
       font-size: 13px;
-      color: gray;
+      color: #333;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
     }
 
-    /* all Buttons style........................ */
+    .account-content label .req {
+      color: #e91e63;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 24px;
+      align-items: start;
+    }
+
+    .profile-grid .full-row {
+      grid-column: 1 / -1;
+    }
+
     .btn {
-      padding: 10px 15px;
+      padding: 10px 24px;
       border: none;
       cursor: pointer;
-      margin-top: 10px;
+      margin-top: 6px;
+      border-radius: 20px;
+      font-size: 14px;
     }
 
     .edit-btn {
@@ -127,17 +224,117 @@
       color: white;
     }
 
+    .edit-btn:hover {
+      background: #096d71;
+    }
+
     .save-btn {
-      background: green;
+      background: #1aa06d;
       color: white;
     }
 
-    /* Popup card style............................ */
+    .save-btn:hover {
+      background: #0a6f48;
+    }
+
+    .password-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 30px;
+      margin-top: 20px;
+    }
+
+    .password-card h2 {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+
+    .password-field-wrap {
+      max-width: 480px;
+      margin: 0 auto 18px;
+      position: relative;
+    }
+
+    .password-field-wrap label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 6px;
+    }
+
+    .password-field-wrap .input-row {
+      position: relative;
+    }
+
+    .password-field-wrap input {
+      width: 100%;
+      padding: 11px 42px 11px 16px;
+      border: 1px solid #ccc;
+      border-radius: 24px;
+      font-size: 13px;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .password-field-wrap input:focus {
+      border-color: #0c8a8f;
+    }
+
+    .password-field-wrap .toggle-eye {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #888;
+      font-size: 14px;
+      user-select: none;
+    }
+
+    .forgot-pass-link {
+      text-align: right;
+      max-width: 480px;
+      margin: -10px auto 14px;
+    }
+
+    .forgot-pass-link a {
+      font-size: 12.5px;
+      color: #1a6fd1;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .password-hint {
+      font-size: 11.5px;
+      color: #888;
+      margin-top: 5px;
+    }
+
+    .password-error {
+      font-size: 12px;
+      color: #e91e63;
+      margin-top: 5px;
+      min-height: 14px;
+    }
+
+    .password-save-wrap {
+      max-width: 480px;
+      margin: 10px auto 0;
+    }
+
+    .password-save-wrap .save-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
     .popup-box {
       background: white;
       padding: 25px;
       border-radius: 12px;
-      width: 300px;
+      width: 330px;
       text-align: center;
       position: relative;
     }
@@ -356,17 +553,275 @@
       color: #555;
       cursor: pointer;
     }
-      .nav-icons {
-    display: flex;
-    gap: 25px;
-  }
 
-  .nav-icons div {
-    text-align: center;
-    font-size: 18px;
-    cursor: pointer;
+    .nav-icons {
+      display: flex;
+      gap: 25px;
+    }
 
-  }
+    .nav-icons div {
+      text-align: center;
+      font-size: 18px;
+      cursor: pointer;
+
+    }
+
+    .nav-icons div span {
+      display: block;
+      font-size: 11px;
+      margin-top: 2px;
+    }
+
+    .mobile-bottom-nav {
+      display: none;
+    }
+
+    #scrollFab {
+      position: fixed;
+      right: 22px;
+      bottom: 90px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: #0c8a8f;
+      color: #fff;
+      border: none;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      z-index: 500;
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    #scrollFab:hover {
+      background: #096d71;
+      transform: scale(1.06);
+    }
+
+    #scrollFab.hidden {
+      display: none;
+    }
+
+    @media (max-width:768px) {
+
+      .header-bar {
+        padding: 16px;
+        position: relative;
+      }
+
+      .header-bar h2 {
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0;
+      }
+
+      .header-bar h2::before {
+        content: "\f060";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 16px;
+      }
+
+      .header-search,
+      .header-bar .nav-icons {
+        display: none;
+      }
+
+      .breadcrumb {
+        display: none;
+      }
+
+      .account-container {
+        width: auto;
+        margin: 14px 14px 90px;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .account-sidebar {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 12px;
+        border-radius: 14px;
+      }
+
+      .account-sidebar div {
+        background: #e6f7f7;
+        border-radius: 8px;
+        padding: 14px 10px;
+        font-size: 13.5px;
+        font-weight: 600;
+        text-align: left;
+        border-left: none;
+        flex: 1 1 calc(50% - 5px);
+        box-sizing: border-box;
+      }
+
+      .account-sidebar div.active {
+        border-left: 4px solid #0c8a8f;
+        padding-left: 8px;
+      }
+
+      .account-sidebar div:hover {
+        background: #d8f0f0;
+      }
+
+      .account-container>div[style] {
+        width: 100% !important;
+      }
+
+      .account-content {
+        width: 100%;
+        border-radius: 14px;
+        padding: 18px;
+      }
+
+      .account-content h2 {
+        font-size: 15px;
+        margin-bottom: 14px;
+      }
+
+      .profile-grid {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .profile-grid .pair-row {
+        display: flex;
+        gap: 0 14px;
+      }
+
+      .profile-grid .pair-row>div {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .account-content input,
+      .account-content select {
+        border-radius: 24px;
+        padding: 11px 14px;
+        font-size: 13px;
+      }
+
+      .edit-btn,
+      .password-save-wrap .save-btn {
+        width: 100%;
+        padding: 13px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 15px;
+      }
+
+      .full-row {
+        width: 88%;
+      }
+
+      .input-error {
+        display: block;
+        color: #e53935;
+        font-size: 12px;
+        margin: -10px 0 12px;
+        min-height: 16px;
+      }
+
+      .input-invalid {
+        border: 1px solid #e53935 !important;
+      }
+
+      .password-card {
+        border-radius: 14px;
+        padding: 18px;
+        margin-top: 14px;
+      }
+
+      .password-card h2 {
+        font-size: 15px;
+        margin-bottom: 18px;
+      }
+
+      .password-field-wrap {
+        max-width: none;
+      }
+
+      .forgot-pass-link {
+        max-width: none;
+      }
+
+      .password-save-wrap {
+        max-width: none;
+      }
+
+      .mobile-bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        border-top: 1px solid #eee;
+        justify-content: space-around;
+        align-items: center;
+        padding: 8px 4px 10px;
+        z-index: 600;
+      }
+
+      .mobile-bottom-nav .m-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        font-size: 11px;
+        font-weight: 600;
+        color: #888;
+        cursor: pointer;
+        position: relative;
+        padding: 2px 6px;
+      }
+
+      .mobile-bottom-nav .m-nav-item i {
+        font-size: 18px;
+      }
+
+      .mobile-bottom-nav .m-nav-item.active {
+        color: #1a4fe8;
+      }
+
+      .mobile-bottom-nav .cart-icon-wrap {
+        position: relative;
+      }
+
+      .mobile-bottom-nav .m-nav-badge {
+        position: absolute;
+        top: -6px;
+        right: -9px;
+        background: #e02424;
+        color: #fff;
+        font-size: 9px;
+        font-weight: 700;
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #scrollFab {
+        bottom: 82px;
+        right: 16px;
+        width: 42px;
+        height: 42px;
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
 
@@ -376,11 +831,16 @@
 
   <div class="header-bar">
     <h2>My Account</h2>
-       <div class="nav-icons">
-            <div onclick="goHome()">
-    <i class="fa-solid fa-house"></i><br>
-    <span>Home</span>
-  </div>
+    <div class="header-search">
+      <input type="text" placeholder="Search for products, brands and more">
+      <button onclick="return false;"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+
+    <div class="nav-icons">
+      <div onclick="goHome()">
+        <i class="fa-solid fa-house"></i><br>
+        <span>Home</span>
+      </div>
       <div onclick="goCart()">
         <i class="fa-solid fa-cart-arrow-down"></i><br>
         <span>Cart</span>
@@ -390,9 +850,11 @@
         <i class="fa-solid fa-truck"></i><br>
         <span>My Orders</span>
       </div>
-
-   
     </div>
+  </div>
+
+  <div class="breadcrumb">
+    <a href="first.html">Home</a> / <span class="current">My Account</span>
   </div>
 
   <div class="account-container">
@@ -404,184 +866,327 @@
       <div class="menu-item" onclick="setActive(this); showLogout()">Logout</div>
     </div>
 
+    <div style="width:75%; display:flex; flex-direction:column;">
 
-    <div class="account-content">
-      <h2>Profile Details</h2>
+      <div class="account-content">
+        <h2>Profile Details</h2>
+        <div id="accountDetails"></div>
+        <div id="profileError" class="form-error"></div>
+        <button class="btn edit-btn" onclick="editProfile()" id="editBtn">Edit</button>
+        <button class="btn save-btn" onclick="saveProfile()" style="display:none;" id="saveBtn">Save</button>
+      </div>
 
-      <div id="accountDetails"></div>
-      <div id="profileError" class="form-error"></div>
-      <button class="btn edit-btn" onclick="editProfile()">Edit</button>
-      <button class="btn save-btn" onclick="saveProfile()" style="display:none;" id="saveBtn">Save</button>
+      <div class="password-card">
+        <h2>Change Password</h2>
+
+        <div class="password-field-wrap">
+          <label>Current Password <span class="req">*</span></label>
+          <div class="input-row">
+            <input type="password" id="currentPassword" placeholder="">
+            <i class="fa-solid fa-eye toggle-eye" onclick="togglePasswordView('currentPassword', this)"></i>
+          </div>
+        </div>
+
+        <div class="forgot-pass-link">
+          <a onclick="forgotPassword()">Forward Password ?</a>
+        </div>
+
+        <div class="password-field-wrap">
+          <label>New Password <span class="req">*</span></label>
+          <div class="input-row">
+            <input type="password" id="newPassword" placeholder="" maxlength="10">
+            <i class="fa-solid fa-eye toggle-eye" onclick="togglePasswordView('newPassword', this)"></i>
+          </div>
+          <div class="password-hint">8-10 characters, at least 1 number &amp; 1 special character</div>
+        </div>
+
+        <div class="password-field-wrap">
+          <label>Confirm Password <span class="req">*</span></label>
+          <div class="input-row">
+            <input type="password" id="confirmPassword" placeholder="" maxlength="10">
+            <i class="fa-solid fa-eye toggle-eye" onclick="togglePasswordView('confirmPassword', this)"></i>
+          </div>
+        </div>
+
+        <div class="password-error" id="passwordError"></div>
+
+        <div class="password-save-wrap">
+          <button class="btn save-btn" onclick="changePassword()">Save</button>
+        </div>
+      </div>
     </div>
-
   </div>
 
+  <div class="mobile-bottom-nav">
+    <div class="m-nav-item " onclick="goHome()">
+      <i class="fa-solid fa-house-chimney"></i>
+      Home
+    </div>
+    <div class="m-nav-item" onclick="openOrders()">
+      <i class="fa-solid fa-cubes"></i>
+      My Orders
+
+    </div>
+    <div class="m-nav-item" onclick="goCategories()">
+      <i class="fa-solid fa-table-list"></i>
+      Categories
+    </div>
+    <div class="m-nav-item active" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <i class="fa-solid fa-user"></i>
+      Account
+    </div>
+    <div class="m-nav-item" onclick="goCart()">
+      <span class="cart-wrap">
+        <i class="fa-solid fa-cart-arrow-down"></i>
+        <span class="m-nav-badge" id="mCartBadge">0</span>
+      </span>
+      Cart
+    </div>
+  </div>
+
+  <button id="scrollFab" onclick="handleScrollFab()" aria-label="Scroll">
+    <i class="fa-solid fa-arrow-down" id="scrollFabIcon"></i>
+  </button>
 
   <div id="logoutPopup" class="popup">
     <div class="popup-box">
-
-      <span class="close-btn" onclick="closePopup()">✖</span>
-
+      <span class="close-btn" onclick="closePopups()">✖</span>
       <h3 id="popupName"></h3>
       <p id="popupPhone"></p>
-
       <div class="divider"></div>
-
       <p>Are you sure you want to logout?</p>
-
       <button class="logout-btn" onclick="logout()">Logout</button>
-
     </div>
   </div>
 
-  <!-- Customer Support Popup -->
   <div id="supportPopup" class="popup">
     <div class="popup-box">
-
       <span class="close-btn" onclick="closeSupport()">✖</span>
-
       <h3>Komal Chand Store</h3>
       <p><b>Owner:</b> Komal Chand</p>
-
       <div class="divider"></div>
-
       <p>📞 Phone: 9999999999</p>
-      <p>📱 WhatsApp: 9129840369</p><!--Number dalana hai yaha  per .................................-->
+      <p>📱 WhatsApp: 9999999999</p><!--Number dalana hai yaha  per .................................-->
       <p>📍 Address: Rawarpura, Lalitpur (U.P)</p>
       <p>🕒 Timing: 9AM - 9PM</p>
-
       <div class="divider"></div>
-
       <button class="logout-btn" onclick="callNow()">Call Now</button>
       <button class="logout-btn" onclick="openWhatsApp()">WhatsApp</button>
-
     </div>
   </div>
   <script src="utils.js"></script>
 
   <script>
-
     let user = JSON.parse(localStorage.getItem("user"));
     const box = document.getElementById("accountDetails");
 
-    /* LOAD USER */
-    function loadUser() {
-      if (!user) {
-        box.innerHTML = "<h3>No account found</h3>";
-        showError("Please create account first ❌");
+    async function loadUser() {
+      const currentUser = JSON.parse(localStorage.getItem("user"));
+      if (!currentUser) {
+        location.href = "first.html";
         return;
       }
-
-      box.innerHTML = `
-    <p><b>Name:</b> <span id="name">${user.name}</span></p>
-    <p><b>Phone:</b> <span id="phone">${user.phone}</span></p>
-    <p><b>Second Phone:</b> <span id="phone2">${user.phone2 || "-"}</span></p>
-    <p><b>Address:</b> <span id="address">${user.address}</span></p>
-    <p><b>Pincode:</b> <span id="pincode">${user.pincode}</span></p>
-    <p><b>Landmark:</b> <span id="landmark">${user.landmark}</span></p>
-  `;
+      try {
+        const res = await fetch(
+          `http://localhost:3000/api/profile?user_id=${currentUser.user_id}`
+        );
+        const data = await res.json();
+        if (!data.success) {
+          showError(data.message);
+          return;
+        }
+        user = data.user;
+        localStorage.setItem("user", JSON.stringify(user));
+        box.innerHTML = `
+              <div class="profile-grid">
+              
+              <div class="pair-row">
+              <div>
+              <label>First Name</label>
+              <input id="fname" value="${user.first_name}" readonly>
+              </div>
+              
+              <div>
+              <label>Last Name</label>
+              <input id="lname" value="${user.last_name}" readonly>
+              </div>
+              </div>
+              
+              <div class="full-row">
+              <label>Phone</label>
+              <input id="phone" value="${user.phone}" readonly>
+              </div>
+              
+              <div class="full-row">
+              <label>Email</label>
+              <input id="email" value="${user.email}" readonly>
+              </div>
+              
+              <div class="full-row">
+              <label>Address</label>
+              <input id="address" value="${user.address}" readonly>
+              </div>
+              
+              <div class="pair-row">
+              <div>
+              <label>Landmark</label>
+              <input id="landmark" value="${user.landmark}" readonly>
+              </div>
+              
+              <div>
+              <label>Pincode</label>
+              <input id="pincode" value="${user.pincode}" readonly>
+              </div>
+              </div>
+              </div>`;
+      }
+      catch (err) {
+        console.log(err);
+      }
     }
-
     loadUser();
-
     function editProfile() {
+
       box.innerHTML = `
-    <label>Name</label>
-    <input id="name" value="${user.name}">
+        <div class="profile-grid">
+        
+        <div class="pair-row">
+        <div>
+        
+        <label>First Name <span class="req">*</span></label>
+        <input id="fname" value="${user.first_name || ""}">
+        <small id="fnameError" class="input-error"></small>
+        </div>
+        <div>
+        
+        <label>Last Name <span class="req">*</span></label>
+        <input id="lname" value="${user.last_name || ""}">
+        <small id="lnameError" class="input-error"></small>
+        </div>
+        </div>
 
-    <label>Phone</label>
-    <input id="phone" value="${user.phone}">
+        <div class="full-row">
+        <label>Phone <span class="req">*</span></label>
+        <input id="phone" value="${user.phone}">
+        <small id="phoneError" class="input-error"></small>
+        </div>
 
-    <label>Second Phone</label>
-    <input id="phone2" value="${user.phone2 || ""}">
+        <div class="full-row">
+        <label>Email <span class="req">*</span></label>
+        <input id="email" value="${user.email}">
+        <small id="emailError" class="input-error"></small>
+        </div>
 
-    <label>Address</label>
-    <input id="address" value="${user.address}">
+        <div class="full-row">
+        <label>Address <span class="req">*</span></label>
+        <input id="address" value="${user.address}">
+        <small id="addressError" class="input-error"></small>
+        </div>
 
-    <label>Pincode</label>
-    <input id="pincode" value="${user.pincode}">
+        <div class="pair-row">
+        <div>
+        <label>Landmark <span class="req">*</span></label>
+        <input id="landmark" value="${user.landmark}">
+        <small id="landmarkError" class="input-error"></small>
+        </div>
 
-    <label>Landmark</label>
-    <input id="landmark" value="${user.landmark}">
-  `;
-
+        <div>
+        <label>Pincode <span class="req">*</span></label>
+        <input id="pincode" value="${user.pincode}">
+        <small id="pincodeError" class="input-error"></small>
+        </div>
+        </div>
+        </div>`;
+      document.getElementById("editBtn").style.display = "none";
       document.getElementById("saveBtn").style.display = "inline-block";
+      setupValidation();
+    }
+    async function saveProfile() {
+
+      const currentUser = JSON.parse(localStorage.getItem("user"));
+
+      const body = {
+        user_id: currentUser.user_id,
+
+        first_name: document.getElementById("fname").value.trim(),
+        last_name: document.getElementById("lname").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        address: document.getElementById("address").value.trim(),
+        landmark: document.getElementById("landmark").value.trim(),
+        pincode: document.getElementById("pincode").value.trim()
+      };
+
+      body.email = body.email.toLowerCase().trim();
+      body.phone = body.phone.trim();
+      const oldUser = JSON.parse(localStorage.getItem("user"));
+      oldUser.email = oldUser.email.toLowerCase().trim();
+      oldUser.phone = oldUser.phone.trim();
+      if (
+        body.first_name === oldUser.first_name &&
+        body.last_name === oldUser.last_name &&
+        body.email === oldUser.email &&
+        body.phone === oldUser.phone &&
+        body.address === oldUser.address &&
+        body.landmark === oldUser.landmark &&
+        body.pincode === oldUser.pincode
+      ) {
+        document.getElementById("saveBtn").style.display = "none";
+        document.getElementById("editBtn").style.display = "inline-block";
+        await loadUser();
+        return;
+      }
+      try {
+        const res = await fetch(
+          "http://localhost:3000/api/profile",
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+          }
+        );
+
+        const data = await res.json();
+        if (!data.success) {
+          showError(data.message);
+          return;
+        }
+
+        localStorage.setItem("user", JSON.stringify(body));
+        showPopup(
+          "Profile Updated ✅","Your profile has been updated successfully."
+        );
+        document.getElementById("saveBtn").style.display = "none";
+        document.getElementById("editBtn").style.display = "inline-block";
+        loadUser();
+
+      }
+      catch (err) {
+        console.error(err);
+        showError("⚠️ Unable to Update  profile.");
+      }
     }
 
-    function saveProfile() {
-      const errorBox = document.getElementById("profileError");
-
-      const name = document.getElementById("name").value.trim();
-      const phone = document.getElementById("phone").value.trim();
-      const phone2 = document.getElementById("phone2").value.trim();
-      const address = document.getElementById("address").value.trim();
-      const pincode = document.getElementById("pincode").value.trim();
-      const landmark = document.getElementById("landmark").value.trim();
-
-      if (!name || !phone || !address || !pincode || !landmark) {
-        showError("Please fill all details ❌");
-        return;
-      }
-
-      if (phone.length !== 10) {
-        showError("Phone must be 10 digits ❌");
-        return;
-      }
-
-      errorBox.innerText = "";
-
-      if (!name || !phone || !address || !pincode || !landmark) {
-        errorBox.innerText = "All fields required ❌";
-        return;
-      }
-
-      if (!/^[0-9]{10}$/.test(phone)) {
-        errorBox.innerText = "Phone must be 10 digits ❌";
-        return;
-      }
-
-      if (phone2 && !/^[0-9]{10}$/.test(phone2)) {
-        errorBox.innerText = "Second phone invalid ❌";
-        return;
-      }
-
-      user = { name, phone, phone2, address, pincode, landmark };
-      localStorage.setItem("user", JSON.stringify(user));
-
-      loadUser();
-      document.getElementById("saveBtn").style.display = "none";
-
-      showPopup("Profile Updated ✅", "Changes saved");
-    }
-
-    function goHome() {
-      window.location.href = "first.html";
-    }
-
-    /* logout card popup ................................ */
     function showLogout() {
       const user = JSON.parse(localStorage.getItem("user"));
-
-      document.getElementById("popupName").innerText = user.name;
+      document.getElementById("popupName").innerText = user.first_name + " " + user.last_name;
       document.getElementById("popupPhone").innerText = user.phone;
-
       const popup = document.getElementById("logoutPopup");
       popup.style.display = "flex";
     }
 
-    /* popup logout msg close systerm .................*/
-    // outside click karne per close 
     document.getElementById("logoutPopup").addEventListener("click", function (e) {
       if (e.target.id === "logoutPopup") {
-        closePopup();
+        closePopups();
       }
     });
 
-    // esc key dawane per close 
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") closePopup();
+      if (e.key === "Escape") closePopups();
     });
-    /* logout system...........  */
+
     function logout() {
       localStorage.removeItem("user");
 
@@ -592,7 +1197,7 @@
       }, 1200);
     }
 
-    function closePopup() {
+    function closePopups() {
       const popup = document.getElementById("logoutPopup");
       popup.style.display = "none";
     }
@@ -622,7 +1227,6 @@
       }, 2000);
     }
 
-
     function showSupport() {
       document.getElementById("supportPopup").style.display = "flex";
     }
@@ -631,13 +1235,11 @@
       document.getElementById("supportPopup").style.display = "none";
     }
 
-
     document.getElementById("supportPopup").addEventListener("click", function (e) {
       if (e.target.id === "supportPopup") {
         closeSupport();
       }
     });
-
 
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") closeSupport();
@@ -645,7 +1247,7 @@
 
     /* CALL BUTTON .........................................................Number add karna hai */
     function callNow() {
-      window.location.href = "tel:9129840369";
+      window.location.href = "tel:9999999999";
     }
 
     function openWhatsApp() {
@@ -656,47 +1258,205 @@
         return;
       }
 
-      const name = user.name || "Customer";
+      const fname = (user.first_name + " " + user.last_name).trim();
       const phone = user.phone || "-";
       const address = user.address || "-";
+      const fullName = `${user.first_name} ${user.last_name}`;
 
       const msg = `Hello Komal Chand Store 👋
+                      
+                  I'm ${fullName}
 
-I'm ${name}
-
-📞 Phone: ${phone}
-📍 Address: ${address}
-
-
-I need help regarding your products/store.
-Please contact me as soon as possible.
-
-Thank you 😊`;
+                  📞 Phone: ${phone}
+                  📧 Gmail: ${user.email}
+                  📍 Address: ${address}
+                  
+                  I need help regarding your products/store.
+                  Please contact me as soon as possible.
+                  
+                  Thank you 😊`;
       /*.........................................................Number add karna hai */
-      const url = "https://wa.me/919129840369?text=" + encodeURIComponent(msg);
-
+      const url = "https://wa.me/919999999999?text=" + encodeURIComponent(msg);
       window.open(url, "_blank");
     }
 
     function setActive(element) {
       const items = document.querySelectorAll(".menu-item");
-
       items.forEach(item => item.classList.remove("active"));
-
       element.classList.add("active");
     }
 
-    function openOrders() {
-      window.location.href = "orders.html";
-    }
-    if (window.location.href.includes("orders")) {
-      document.querySelectorAll(".menu-item")[1].classList.add("active");
+    function togglePasswordView(inputId, iconEl) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+
+      if (input.type === "password") {
+        input.type = "text";
+        iconEl.classList.remove("fa-eye");
+        iconEl.classList.add("fa-eye-slash");
+      } else {
+        input.type = "password";
+        iconEl.classList.remove("fa-eye-slash");
+        iconEl.classList.add("fa-eye");
+      }
     }
 
-    
-function goCart() {
-  window.location.href = "cart.html";
-}
+    function isValidPassword(pwd) {
+
+      const lengthOk = pwd.length >= 8 && pwd.length <= 10;
+      const hasNumber = /[0-9]/.test(pwd);
+      const hasSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~`]/.test(pwd);
+      return lengthOk && hasNumber && hasSpecial;
+    }
+
+    function showInputError(id, message) {
+
+      document.getElementById(id).innerText = message;
+      document.getElementById(id.replace("Error", "")).classList.add("input-invalid");
+    }
+
+    function setupValidation() {
+
+      const fname = document.getElementById("fname");
+      const lname = document.getElementById("lname");
+      const phone = document.getElementById("phone");
+      const email = document.getElementById("email");
+      const pincode = document.getElementById("pincode");
+
+      fname.addEventListener("input", () => {
+        fname.value = fname.value.replace(/[^A-Za-z ]/g, "");
+      });
+
+      lname.addEventListener("input", () => {
+        lname.value = lname.value.replace(/[^A-Za-z ]/g, "");
+      });
+
+      phone.addEventListener("input", () => {
+        phone.value = phone.value.replace(/\D/g, "").slice(0, 10);
+      });
+
+
+      pincode.addEventListener("input", () => {
+        pincode.value = pincode.value.replace(/\D/g, "").slice(0, 6);
+      });
+
+      email.addEventListener("blur", () => {
+        const reg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (email.value && !reg.test(email.value))
+          showInputError("emailError", "Enter valid email.");
+
+        else
+          clearInputError("emailError");
+      });
+    }
+
+    function clearInputError(id) {
+      document.getElementById(id).innerText = "";
+      document.getElementById(id.replace("Error", "")).classList.remove("input-invalid");
+    }
+
+    async function changePassword() {
+      const errorBox = document.getElementById("passwordError");
+      errorBox.innerText = "";
+
+      const currentUser = JSON.parse(localStorage.getItem("user"));
+
+      if (!currentUser) {
+        showError("Please login first. 👀");
+        return;
+      }
+
+      const currentPassword = document.getElementById("currentPassword").value.trim();
+      const newPassword = document.getElementById("newPassword").value.trim();
+      const confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+      if (!currentPassword || !newPassword || !confirmPassword) {
+        errorBox.innerText = "Please fill all fields.";
+        return;
+      }
+
+      if (!isValidPassword(newPassword)) {
+        errorBox.innerText =
+          "Password must be 8-10 characters with at least 1 number & 1 special character.";
+        return;
+      }
+
+      if (newPassword !== confirmPassword) {
+        errorBox.innerText = "Confirm password does not match.";
+        return;
+      }
+      try {
+        const res = await fetch(
+          "http://localhost:3000/api/change-password",
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+              user_id: currentUser.user_id,
+              currentPassword,
+              newPassword
+            })
+          });
+
+        const data = await res.json();
+
+        if (!data.success) {
+          showError(data.message);
+          return;
+        }
+
+        document.getElementById("currentPassword").value = "";
+        document.getElementById("newPassword").value = "";
+        document.getElementById("confirmPassword").value = "";
+        errorBox.innerText = "";
+        showPopup(
+          "Password Updated ✅","Your password has been changed successfully."
+        );
+      }
+      catch (err) {
+        console.log(err);
+        showError("Server Error ⚠️");
+      }
+    }
+
+    function forgotPassword() {
+      showError("Please contact support to reset your password 📞");
+    }
+
+    const scrollFab = document.getElementById("scrollFab");
+    const scrollFabIcon = document.getElementById("scrollFabIcon");
+
+    function isNearBottom() {
+      return (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 40);
+    }
+
+    function updateScrollFabIcon() {
+      if (isNearBottom()) {
+        scrollFabIcon.classList.remove("fa-arrow-down");
+        scrollFabIcon.classList.add("fa-arrow-up");
+      } else {
+        scrollFabIcon.classList.remove("fa-arrow-up");
+        scrollFabIcon.classList.add("fa-arrow-down");
+      }
+    }
+
+    function handleScrollFab() {
+      if (isNearBottom()) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+      }
+      setTimeout(updateScrollFabIcon, 400);
+    }
+
+    window.addEventListener("scroll", updateScrollFabIcon);
+    window.addEventListener("resize", updateScrollFabIcon);
+    updateScrollFabIcon();
+
 
   </script>
 
