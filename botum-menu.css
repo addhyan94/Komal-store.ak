@@ -1,0 +1,60 @@
+/* sare page ke liye Menu Phone bala .....  */
+ @media(max-width:768px) {
+.mobile-bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        border-top: 1px solid #eee;
+        justify-content: space-around;
+        align-items: center;
+        padding: 8px 4px 10px;
+        z-index: 109999;
+      }
+
+      .mobile-bottom-nav .m-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        font-size: 11px;
+        font-weight: 600;
+        color: #888;
+        cursor: pointer;
+        position: relative;
+        padding: 2px 6px;
+      }
+
+      .mobile-bottom-nav .m-nav-item i {
+        font-size: 18px;
+      }
+
+      .mobile-bottom-nav .m-nav-item.active {
+        color: #1a4fe8;
+
+      }
+
+      .mobile-bottom-nav .cart-icon-wrap {
+        position: relative;
+      }
+
+      .mobile-bottom-nav .m-nav-badge {
+        position: absolute;
+        top: -6px;
+        right: -9px;
+        background: #e02424;
+        color: #fff;
+        font-size: 9px;
+        font-weight: 700;
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      
+    }
