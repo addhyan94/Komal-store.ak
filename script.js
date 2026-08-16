@@ -642,10 +642,10 @@ if (typeof _origRenderProducts === "function") {
 
 /*number dalna hai .......................................................... */
 function openWhatsAppSupport() {
-  window.open("https://wa.me/919999999999", "_blank");
+  window.open("https://wa.me/919129840369", "_blank");
 }
 function callStore() {
-  window.location.href = "tel:9999999999";
+  window.location.href = "tel:9129840369";
 }
 
 function getPriceHTML(item) {
