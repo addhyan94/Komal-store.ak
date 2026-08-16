@@ -1,16 +1,18 @@
-<!-- Main Html file first.html -->
+<!-- Main Html file first.html website Main home page -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <title>Komal Chand Store</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="botum-menu.css">
 </head>
-<body>
 
+<body>
   <div class="top-bar" id="top-bar">
     <div class="top-slide-main-box">
       <div class="main-slide-div-box-group">
@@ -26,8 +28,45 @@
     </div>
   </div>
 
-  <header class="header">
+  <div class="mobile-home-top">
+    <div class="mobile-top-row">
+      <div class="right-mobile-top-row">
+        <div class="mobile-user">
+          <img src="Assets/profile-anim.gif" alt="">
+        </div>
+        <div class="mobile-discount">
+          <img src="Assets/ruppe.png" alt="">
+          <span>Discount upto ₹120</span>
+        </div>
+      </div>
+      <div class="left-mobile-top-row">
+        <div class="mobile-contact">
+          <a href="tel:9999999999"> <!-- Number dalna hai ..............................................-->
+            <img src="Assets/phone-ringing-anim.gif" alt="">
+            <img src="" alt="" srcset="">
+          </a>
+          <a href="https://wa.me/919999999999">
+            <img src="Assets/whatsapp-anim.gif" alt="">
+          </a>
+        </div>
+      </div>
+    </div>
 
+    <div class="mobile-search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input id="mobileSearch" type="text" placeholder="Search by Keyword or Product ID"oninput="mobileSyncSearch(this.value)">
+    </div>
+
+
+    <div class="mobile-welcome">
+      <img src="Assets/hello-anim.gif" alt="">
+      <span> Welcome to Komal Journal Store</span>
+      <b id="mWelcomeName">User </b>
+      <i class="fa-solid fa-angle-right"></i>
+    </div>
+  </div>
+
+  <header class="header">
     <div class="logo">
       <h3>Komal Journal Store</h3>
       <span>Rawarpura, Lalitpur (U.P)</span>
@@ -37,40 +76,64 @@
       <span id="clearSearch" class="clear-search">✖</span>
       <div id="suggestions" class="suggestions"></div>
     </div>
-
-    <div class="actions"></div>
-
     <div class="nav-icons">
       <div onclick="goCart()">
         <i fetchpriority="high" class="fa-solid fa-cart-arrow-down"></i><br>
         <span>Cart</span>
       </div>
-
       <div onclick="openOrders()">
         <i fetchpriority="high" class="fa-solid fa-truck"></i><br>
         <span>My Orders</span>
       </div>
-
       <div onclick="goToAccount()">
         <i fetchpriority="high" class="fa-solid fa-user"></i><br>
         <span>Account</span>
       </div>
     </div>
-    
   </header>
+
   <nav class="navbar">
     <div class="menu">☰ All Categories</div>
     <ul>
       <li><a href="#top-bar">Home</a></li>
       <li><a href="#Best-products">Shop</a></li>
-      <li>Offers</li>
-      <li>New Arrivals</li>
+      <li><a href="#offerProducts">Offers</a></li>
+      <li><a href="#newArrivalSection">New Arrivals</a></li>
       <li>About Us</li>
     </ul>
   </nav>
-    <section class="hero">
-      <img id="heroImage" src="Posters/Komal Chand Journal Store Poster..jpg" fetchpriority="high" alt="Poster">
-    </section>
+
+  <section class="hero" style="position:relative;">
+    <img id="heroImage" src="Posters/Komal Chand Journal Store Poster..jpg" fetchpriority="high" alt="Poster">
+
+    <div class="mobile-coupon-overlay">
+      <div class="coupon-left">
+        <div class="coupon-tag">Special Offer+</div>
+        <div style="display:flex;align-items:baseline;gap:2px;">
+          <span style="font-size:13px;font-weight:700;">Flat</span>
+        </div>
+        <div class="coupon-pct">10<span style="font-size:14px;">%</span></div>
+        <div class="coupon-off">Off</div>
+        <div class="coupon-label">On New Arrivals</div>
+        <div style="display:flex;gap:2px;margin-top:6px;justify-content:center;">
+          <div style="width:2px;height:18px;background:#222;border-radius:1px;"></div>
+          <div style="width:1px;height:18px;background:#555;border-radius:1px;"></div>
+          <div style="width:3px;height:18px;background:#222;border-radius:1px;"></div>
+          <div style="width:1px;height:18px;background:#555;border-radius:1px;"></div>
+          <div style="width:2px;height:18px;background:#222;border-radius:1px;"></div>
+          <div style="width:1px;height:18px;background:#888;border-radius:1px;"></div>
+          <div style="width:2px;height:18px;background:#222;border-radius:1px;"></div>
+          <div style="width:3px;height:18px;background:#333;border-radius:1px;"></div>
+          <div style="width:1px;height:18px;background:#222;border-radius:1px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <button class="mobile-coupon-next" onclick="nextHeroImage()">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </section>
+
   <section class="features">
     <div>Wide Range</div>
     <div>Best Quality</div>
@@ -78,101 +141,221 @@
     <div>Fast Delivery</div>
     <div>Easy Returns</div>
   </section>
+
   <section class="categories">
-    <h2>Shop by Categories</h2>
+    <div class="category-top">
+      <button class="active">☷ All Categories</button>
+      <button onclick="scrollCategory('stationery')">🖊️ Stationery</button>
+      <button onclick="scrollCategory('food')">🛒 Food & Grocery</button>
+      <button onclick="scrollCategory('books')">📚 Books</button>
+      <button onclick="scrollCategory('home')">🍲 Home & Kitchen</button>
+      <button onclick="scrollCategory('toys')">🎮 Toys & Games</button>
+      <button onclick="scrollCategory('beauty')">💄 Beauty</button>
+      <button onclick="scrollCategory('food')">🍫 Chocolate</button>
+    </div>
 
     <div class="category-grid">
-      <div class="cat-card"><img src="Assets/Stationary.jpg">
-        <p>Stationary</p>
+      <div class="category-box" onclick="scrollCategory('stationery')">
+        <img src="Assets/Stationary.jpg">
+        <h3>Stationery</h3>
+        <div class="line"></div>
       </div>
-      <div class="cat-card"><img src="Assets/mendhi-cone.jpg">
-        <p>Mehndi</p>
+      <div class="category-box" onclick="scrollCategory('food')">
+        <img src="Assets/Chocolate.jpg">
+        <h3>Food & Grocery</h3>
+        <div class="line"></div>
       </div>
-      <div class="cat-card"><img src="Assets/Chocolate.jpg">
-        <p>Chocolate</p>
+      <div class="category-box" onclick="scrollCategory('books')">
+        <img src="Assets/book.jpg">
+        <h3>Books</h3>
+        <div class="line"></div>
       </div>
-      <div class="cat-card"><img src="Assets/Ice-Cream.webp">
-        <p>Ice Cream</p>
+      <div class="category-box" onclick="scrollCategory('home')">
+        <img src="Assets/home.png">
+        <h3>Home & Kitchen</h3>
+        <div class="line"></div>
       </div>
-      <div class="cat-card"><img src="Assets/Gifts.jpg">
-        <p>Gifts</p>
+      <div class="category-box" onclick="scrollCategory('toys')">
+        <img src="Assets/toys.png">
+        <h3>Toys & Games</h3>
+        <div class="line"></div>
+      </div>
+      <div class="category-box" onclick="scrollCategory('beauty')">
+        <img src="Assets/beauty.png">
+        <h3>Beauty</h3>
+        <div class="line"></div>
+      </div>
+      <div class="category-box more-card" onclick="toggleMore()">
+        <div class="dots">•••</div>
+        <h3>More</h3>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="category-grid extra-category" id="extraCategory">
+      <div class="category-box" onclick="scrollCategory('electrical')">
+        <img src="Assets/electrical.png">
+        <h3>Electricals</h3>
+        <div class="line"></div>
+      </div>
+
+      <div class="category-box">
+        <img src="Assets/mendhi-cone.jpg">
+        <h3>Mehndi</h3>
+        <div class="line"></div>
+      </div>
+      <div class="category-box">
+        <img src="Assets/Ice-Cream.webp">
+        <h3>Ice Cream</h3>
+        <div class="line"></div>
+      </div>
+      <div class="category-box">
+        <img src="Assets/Gifts.jpg">
+        <h3>Gift Items</h3>
+        <div class="line"></div>
       </div>
     </div>
   </section>
-  <section class="products" id="Best-products">
-    <h2>Best products</h2>
+  <section id="offerProducts"></section>
 
+  <section class="products" id="Best-products">
+    <h2>Best All products</h2>
     <div class="product-grid" id="products"></div>
+
+    <div class="mobile-view-more" id="mobileViewMore" style="display:none;">
+      <button onclick="mobileViewMoreProducts()">View more products <i class="fa-solid fa-chevron-right"></i></button>
+    </div>
   </section>
+
+  <section class="new-arrivals-section" id="newArrivalSection">
+    <div class="new-arrivals-header">
+      <div class="new-arrivals-title">
+        🆕 <span>New Arrivals</span>
+      </div>
+      <div class="arrival-timer">
+        Ends in :<span id="arrivalTimer">24:00:00</span>
+      </div>
+    </div>
+    <div class="new-arrivals-wrapper">
+      <div class="new-arrivals-slider" id="newArrivalCards"></div>
+    </div>
+  </section>
+
+  <section id="categorySections"></section>
+
   <footer class="main-footer">
     <div class="footer-box-style">
-
       <div>
         <h3>Komal Chand Store</h3>
         <p>Your one-stop shop</p>
       </div>
-
       <div>
         <h4>Quick Links</h4>
         <p class="Quicklink" onclick="goHome()">Home</p>
         <p class="Quicklink" onclick="goOrders()">Track Order</p>
-        <p class="Quicklink" onclick="goAccount()">Account</p>
-
+        <p class="Quicklink" onclick="goToAccount()">Account</p>
       </div>
-
       <div>
         <h4>Contact</h4>
         <p>+91 9999999999</p>
         <p>Lalitpur (U.P)</p>
       </div>
-
     </div>
-
   </footer>
 
   <footer>
     <div class="end-footer">
-
       <div class="ft-text-items">
         <img src="Assets/icons-footer/best-product.png">
         <span>Best Products</span>
       </div>
-
       <div class="ft-text-items">
         <img src="Assets/icons-footer/Advertise.png">
         <span>Advertise</span>
       </div>
-
       <div class="ft-text-items">
         <img src="Assets/icons-footer/gift-cards.png">
         <span>Gift Cards</span>
       </div>
-
       <div class="ft-text-items ft-card">
         <img src="Assets/icons-footer/py-cards.png">
       </div>
-
     </div>
   </footer>
+
+<!-- Account popup cards.......................... -->
   <div id="accountPopup" class="account-popup">
     <div class="account-box">
-      <h2>Create Account</h2>
-      <div id="formError" class="form-error"></div>
-      <input type="text" id="name" placeholder="Full Name">
-      <input type="text" id="phone" placeholder="Phone Number">
-      <input type="text" id="phone2" placeholder="Second Phone (optional)">
-      <input type="text" id="address" placeholder="Address">
-      <input type="text" id="pincode" placeholder="Pincode">
-      <input type="text" id="landmark" placeholder="Landmark">
+      <div id="registerForm">
+        <h2>Create Account</h2>
+        <div id="formError" class="form-error"></div>
+        <input type="text" id="fname" placeholder="First Name">
+        <small id="fnameError" class="input-error"></small>
+        <input type="text" id="lname" placeholder="Last Name">
+        <small id="lnameError" class="input-error"></small>
+        <input type="text" id="phone" placeholder="Phone Number" maxlength="10">
+        <small id="phoneError" class="input-error"></small>
+        <input type="text" id="email" placeholder="Email">
+        <small id="emailError" class="input-error"></small>
+        <input type="text" id="address" placeholder="Address">
+        <small id="addressError" class="input-error"></small>
+        <input type="text" id="pincode" placeholder="Pincode" maxlength="6">
+        <small id="pincodeError" class="input-error"></small>
+        <input type="text" id="landmark" placeholder="Landmark">
+        <small id="landmarkError" class="input-error"></small>
+        <input type="password" id="password" placeholder="Password">
+        <small id="passwordError" class="input-error"></small>
+        <input type="password" id="confirmPassword" placeholder="Confirm Password">
+        <small id="confirmPasswordError" class="input-error"></small>
+        <button onclick="saveAccount()">Create Account</button>
+        <p class="switch-link">
+          Already have an account?
+          <span onclick="showLogin()">Login Here</span>
+        </p>
+      </div>
+      <div id="loginForm" style="display:none;">
+        <h2>Login</h2>
+        <div id="loginError" class="form-error"></div>
+        <input type="text" id="loginUser" placeholder="Email or Phone Number">
+        <input type="password" id="loginPassword" placeholder="Password">
+        <button onclick="loginAccount()">Login</button>
+        <p class="switch-link">
+          Don't have an account?
+          <span onclick="showRegister()">Create Account</span>
+        </p>
+      </div>
+    </div>
+  </div>
 
-      <button onclick="saveAccount()">Save Details</button>
+  <div class="mobile-bottom-nav">
+    <div class="m-nav-item active" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <i class="fa-solid fa-house-chimney active"></i>
+      Home
+    </div>
+    <div class="m-nav-item" onclick="openOrders()">
+      <i class="fa-solid fa-cubes" ></i>
+      My Orders
+
+    </div>
+    <div class="m-nav-item" onclick="scrollCategory('stationery')">
+      <i class="fa-solid fa-table-list" ></i>
+      Categories
+    </div>
+    <div class="m-nav-item" onclick="goToAccount()">
+      <i class="fa-solid fa-user" ></i>
+      Account
+    </div>
+    <div class="m-nav-item" onclick="goCart()">
+      <span class="cart-wrap">
+        <i class="fa-solid fa-cart-arrow-down" ></i>
+        <span class="m-nav-badge" id="mCartBadge">0</span>
+      </span>
+      Cart
     </div>
   </div>
   <div id="popupMsg" class="popup-msg"></div>
   <div id="errorContainer"></div>
-
   <script src="script.js"></script>
   <script src="utils.js"></script>
 </body>
-
 </html>
