@@ -141,7 +141,6 @@
     .account-sidebar div:hover {
       background: #f5f5f5;
     }
-
     .account-content {
       width: 101%;
       background: white;
@@ -198,7 +197,6 @@
     .account-content label .req {
       color: #e91e63;
     }
-
     .profile-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -209,7 +207,6 @@
     .profile-grid .full-row {
       grid-column: 1 / -1;
     }
-
     .btn {
       padding: 10px 24px;
       border: none;
@@ -236,7 +233,6 @@
     .save-btn:hover {
       background: #0a6f48;
     }
-
     .password-card {
       background: #fff;
       border-radius: 10px;
@@ -571,7 +567,6 @@
       font-size: 11px;
       margin-top: 2px;
     }
-
     .mobile-bottom-nav {
       display: none;
     }
@@ -919,16 +914,16 @@
 
   <div class="mobile-bottom-nav">
     <div class="m-nav-item " onclick="goHome()">
-      <i class="fa-solid fa-house-chimney"></i>
+      <i class="fa-solid fa-house-chimney" ></i>
       Home
     </div>
     <div class="m-nav-item" onclick="openOrders()">
-      <i class="fa-solid fa-cubes"></i>
+      <i class="fa-solid fa-cubes" ></i>
       My Orders
 
     </div>
     <div class="m-nav-item" onclick="goCategories()">
-      <i class="fa-solid fa-table-list"></i>
+      <i class="fa-solid fa-table-list" ></i>
       Categories
     </div>
     <div class="m-nav-item active" onclick="window.scrollTo({top:0,behavior:'smooth'})">
@@ -948,155 +943,179 @@
     <i class="fa-solid fa-arrow-down" id="scrollFabIcon"></i>
   </button>
 
+
   <div id="logoutPopup" class="popup">
     <div class="popup-box">
+
       <span class="close-btn" onclick="closePopups()">✖</span>
+
       <h3 id="popupName"></h3>
       <p id="popupPhone"></p>
+
       <div class="divider"></div>
+
       <p>Are you sure you want to logout?</p>
+
       <button class="logout-btn" onclick="logout()">Logout</button>
+
     </div>
   </div>
 
   <div id="supportPopup" class="popup">
     <div class="popup-box">
+
       <span class="close-btn" onclick="closeSupport()">✖</span>
+
       <h3>Komal Chand Store</h3>
       <p><b>Owner:</b> Komal Chand</p>
+
       <div class="divider"></div>
+
       <p>📞 Phone: 9999999999</p>
       <p>📱 WhatsApp: 9999999999</p><!--Number dalana hai yaha  per .................................-->
       <p>📍 Address: Rawarpura, Lalitpur (U.P)</p>
       <p>🕒 Timing: 9AM - 9PM</p>
+
       <div class="divider"></div>
+
       <button class="logout-btn" onclick="callNow()">Call Now</button>
       <button class="logout-btn" onclick="openWhatsApp()">WhatsApp</button>
+
     </div>
   </div>
   <script src="utils.js"></script>
 
   <script>
+      // Account.js file ...
     let user = JSON.parse(localStorage.getItem("user"));
     const box = document.getElementById("accountDetails");
 
     async function loadUser() {
+
       const currentUser = JSON.parse(localStorage.getItem("user"));
+
       if (!currentUser) {
         location.href = "first.html";
         return;
       }
+
       try {
         const res = await fetch(
           `http://localhost:3000/api/profile?user_id=${currentUser.user_id}`
         );
+
         const data = await res.json();
+
         if (!data.success) {
           showError(data.message);
           return;
         }
+
         user = data.user;
         localStorage.setItem("user", JSON.stringify(user));
+
         box.innerHTML = `
-              <div class="profile-grid">
-              
-              <div class="pair-row">
-              <div>
-              <label>First Name</label>
-              <input id="fname" value="${user.first_name}" readonly>
-              </div>
-              
-              <div>
-              <label>Last Name</label>
-              <input id="lname" value="${user.last_name}" readonly>
-              </div>
-              </div>
-              
-              <div class="full-row">
-              <label>Phone</label>
-              <input id="phone" value="${user.phone}" readonly>
-              </div>
-              
-              <div class="full-row">
-              <label>Email</label>
-              <input id="email" value="${user.email}" readonly>
-              </div>
-              
-              <div class="full-row">
-              <label>Address</label>
-              <input id="address" value="${user.address}" readonly>
-              </div>
-              
-              <div class="pair-row">
-              <div>
-              <label>Landmark</label>
-              <input id="landmark" value="${user.landmark}" readonly>
-              </div>
-              
-              <div>
-              <label>Pincode</label>
-              <input id="pincode" value="${user.pincode}" readonly>
-              </div>
-              </div>
-              </div>`;
+<div class="profile-grid">
+
+<div class="pair-row">
+<div>
+<label>First Name</label>
+<input id="fname" value="${user.first_name}" readonly>
+</div>
+
+<div>
+<label>Last Name</label>
+<input id="lname" value="${user.last_name}" readonly>
+</div>
+</div>
+
+<div class="full-row">
+<label>Phone</label>
+<input id="phone" value="${user.phone}" readonly>
+</div>
+
+<div class="full-row">
+<label>Email</label>
+<input id="email" value="${user.email}" readonly>
+</div>
+
+<div class="full-row">
+<label>Address</label>
+<input id="address" value="${user.address}" readonly>
+</div>
+
+<div class="pair-row">
+<div>
+<label>Landmark</label>
+<input id="landmark" value="${user.landmark}" readonly>
+</div>
+
+<div>
+<label>Pincode</label>
+<input id="pincode" value="${user.pincode}" readonly>
+</div>
+</div>
+</div>`;
       }
       catch (err) {
         console.log(err);
       }
     }
+
     loadUser();
+
     function editProfile() {
 
       box.innerHTML = `
-        <div class="profile-grid">
-        
-        <div class="pair-row">
-        <div>
-        
-        <label>First Name <span class="req">*</span></label>
-        <input id="fname" value="${user.first_name || ""}">
-        <small id="fnameError" class="input-error"></small>
-        </div>
-        <div>
-        
-        <label>Last Name <span class="req">*</span></label>
-        <input id="lname" value="${user.last_name || ""}">
-        <small id="lnameError" class="input-error"></small>
-        </div>
-        </div>
+<div class="profile-grid">
 
-        <div class="full-row">
-        <label>Phone <span class="req">*</span></label>
-        <input id="phone" value="${user.phone}">
-        <small id="phoneError" class="input-error"></small>
-        </div>
+<div class="pair-row">
+<div>
 
-        <div class="full-row">
-        <label>Email <span class="req">*</span></label>
-        <input id="email" value="${user.email}">
-        <small id="emailError" class="input-error"></small>
-        </div>
+<label>First Name <span class="req">*</span></label>
+<input id="fname" value="${user.first_name || ""}">
+<small id="fnameError" class="input-error"></small>
+</div>
+<div>
 
-        <div class="full-row">
-        <label>Address <span class="req">*</span></label>
-        <input id="address" value="${user.address}">
-        <small id="addressError" class="input-error"></small>
-        </div>
+<label>Last Name <span class="req">*</span></label>
+<input id="lname" value="${user.last_name || ""}">
+<small id="lnameError" class="input-error"></small>
+</div>
+</div>
 
-        <div class="pair-row">
-        <div>
-        <label>Landmark <span class="req">*</span></label>
-        <input id="landmark" value="${user.landmark}">
-        <small id="landmarkError" class="input-error"></small>
-        </div>
+<div class="full-row">
+<label>Phone <span class="req">*</span></label>
+<input id="phone" value="${user.phone}">
+<small id="phoneError" class="input-error"></small>
+</div>
 
-        <div>
-        <label>Pincode <span class="req">*</span></label>
-        <input id="pincode" value="${user.pincode}">
-        <small id="pincodeError" class="input-error"></small>
-        </div>
-        </div>
-        </div>`;
+<div class="full-row">
+<label>Email <span class="req">*</span></label>
+<input id="email" value="${user.email}">
+<small id="emailError" class="input-error"></small>
+</div>
+
+<div class="full-row">
+<label>Address <span class="req">*</span></label>
+<input id="address" value="${user.address}">
+<small id="addressError" class="input-error"></small>
+</div>
+
+<div class="pair-row">
+<div>
+<label>Landmark <span class="req">*</span></label>
+<input id="landmark" value="${user.landmark}">
+<small id="landmarkError" class="input-error"></small>
+</div>
+
+<div>
+<label>Pincode <span class="req">*</span></label>
+<input id="pincode" value="${user.pincode}">
+<small id="pincodeError" class="input-error"></small>
+</div>
+</div>
+</div>`;
       document.getElementById("editBtn").style.display = "none";
       document.getElementById("saveBtn").style.display = "inline-block";
       setupValidation();
@@ -1116,7 +1135,6 @@
         landmark: document.getElementById("landmark").value.trim(),
         pincode: document.getElementById("pincode").value.trim()
       };
-
       body.email = body.email.toLowerCase().trim();
       body.phone = body.phone.trim();
       const oldUser = JSON.parse(localStorage.getItem("user"));
@@ -1149,14 +1167,17 @@
         );
 
         const data = await res.json();
+
         if (!data.success) {
           showError(data.message);
           return;
         }
 
         localStorage.setItem("user", JSON.stringify(body));
+
         showPopup(
-          "Profile Updated ✅","Your profile has been updated successfully."
+          "Profile Updated ✅",
+          "Your profile has been updated successfully."
         );
         document.getElementById("saveBtn").style.display = "none";
         document.getElementById("editBtn").style.display = "inline-block";
@@ -1171,6 +1192,7 @@
 
     function showLogout() {
       const user = JSON.parse(localStorage.getItem("user"));
+
       document.getElementById("popupName").innerText = user.first_name + " " + user.last_name;
       document.getElementById("popupPhone").innerText = user.phone;
       const popup = document.getElementById("logoutPopup");
@@ -1261,7 +1283,7 @@
       const fname = (user.first_name + " " + user.last_name).trim();
       const phone = user.phone || "-";
       const address = user.address || "-";
-      const fullName = `${user.first_name} ${user.last_name}`;
+const fullName = `${user.first_name} ${user.last_name}`;
 
       const msg = `Hello Komal Chand Store 👋
                       
@@ -1414,7 +1436,8 @@
         document.getElementById("confirmPassword").value = "";
         errorBox.innerText = "";
         showPopup(
-          "Password Updated ✅","Your password has been changed successfully."
+          "Password Updated ✅",
+          "Your password has been changed successfully."
         );
       }
       catch (err) {
