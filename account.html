@@ -1001,7 +1001,7 @@
 
       try {
         const res = await fetch(
-          `http://localhost:3000/api/profile?user_id=${currentUser.user_id}`
+          `https://komal-store-ak.onrender.com/api/profile?user_id=${currentUser.user_id}`
         );
 
         const data = await res.json();
@@ -1156,7 +1156,7 @@
       }
       try {
         const res = await fetch(
-          "http://localhost:3000/api/profile",
+          "https://komal-store-ak.onrender.com/api/profile",
           {
             method: "PUT",
             headers: {
@@ -1410,7 +1410,7 @@ const fullName = `${user.first_name} ${user.last_name}`;
       }
       try {
         const res = await fetch(
-          "http://localhost:3000/api/change-password",
+          "https://komal-store-ak.onrender.com/api/change-password",
           {
             method: "PUT",
             headers: {
