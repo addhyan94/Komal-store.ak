@@ -212,7 +212,7 @@ async function handlePlaceOrder() {
 async function sendOrder(order) {
     try {
         const response = await fetch(
-            "http://localhost:3000/api/cart/place-order",
+            "https://komal-store-ak.onrender.com/api/cart/place-order",
             {
                 method: "POST",
                 headers: {
