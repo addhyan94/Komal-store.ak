@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/addhyan94/Komal-store.ak#readme",
   "dependencies": {
+    "@imagekit/javascript": "^5.4.1",
+    "@supabase/supabase-js": "^2.112.3",
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
