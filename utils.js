@@ -65,3 +65,36 @@ function showPopup(title, sub) {
     popup.remove();
   }, 2500);
 }
+
+function updateMobileBadge() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const badge = document.getElementById("mCartBadge");
+  if (badge) badge.innerText = cart.reduce((s, i) => s + (i.qty || 1), 0);
+}
+updateMobileBadge();
+window.addEventListener("storage", updateMobileBadge);
+
+function goHome() {
+  window.location.href = "first.html";
+}
+
+function openOrders() {
+  window.location.href = "orders.html";
+}
+if (window.location.href.includes("orders")) {
+  document.querySelectorAll(".menu-item")[1].classList.add("active");
+}
+
+function goToAccount() {
+  window.location.href = "account.html";
+}
+
+function goCart() {
+  window.location.href = "cart.html";
+}
+
+function goCategories() {
+  window.location.href = "first.html";
+}
+
+const API = "http://localhost:3000/api";
