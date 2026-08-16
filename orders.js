@@ -15,7 +15,7 @@ async function loadOrders() {
   }
 
   const response = await fetch(
-    `http://localhost:3000/api/onlymyorders/${user.user_id}`
+    `https://komal-store-ak.onrender.com/api/onlymyorders/${user.user_id}`
   );
 
   const result = await response.json();
