@@ -3,7 +3,7 @@
 let data = [];
 async function loadProducts() {
   const res = await fetch(
-    "http://localhost:3000/api/products"
+    "https://komal-store-ak.onrender.com/api/products"
   );
 
   const result = await res.json();
@@ -444,7 +444,7 @@ function saveAccount() {
 
   if (!valid) return;
 
-  fetch("http://localhost:3000/api/register", {
+  fetch("https://komal-store-ak.onrender.com/api/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -513,7 +513,7 @@ async function loginAccount() {
     .getElementById("loginPassword").value.trim();
   try {
     const res = await fetch(
-      "http://localhost:3000/api/login",
+      "https://komal-store-ak.onrender.com/api/login",
       {
         method: "POST",
         headers: {
