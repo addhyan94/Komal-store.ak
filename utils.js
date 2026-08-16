@@ -97,4 +97,4 @@ function goCategories() {
   window.location.href = "first.html";
 }
 
-const API = "http://localhost:3000/api";
+const API = "https://komal-store-ak.onrender.com/api";
