@@ -1,98 +1,62 @@
-require("dotenv").config();
+//  server.js file 
 
+require("dotenv").config();
+const logger = require("./utils/logger");
 const express = require("express");
-const nodemailer = require("nodemailer");
 const cors = require("cors");
-const fs = require("fs");
+const supabase = require("./config/supabase");
+const authRoutes = require("./routes/authRoutes");
+const productRoutes = require("./routes/productRoutes");
+const cartOrderRoutes = require("./routes/cart-orderRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 const app = express();
 
 app.use(cors());
-
 app.use(express.json());
-
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
+app.use((req, res, next) => {
+  logger.request(req);
+  next();
 });
+app.use("/api", authRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/cart", cartOrderRoutes);
+app.use("/api", orderRoutes);
 
 app.get("/", (req, res) => {
   res.send("Server Running");
 });
+app.get("/test-db", async (req, res) => {
 
-app.post("/place-order", async (req, res) => {
+  const { data, error } = await supabase
+    .from("usersData")
+    .select("*")
+    .limit(1);
 
-  try {
-
-    const order = req.body;
-
-    let orders = [];
-
-    if (fs.existsSync("orders.json")) {
-      orders = JSON.parse(
-        fs.readFileSync("orders.json", "utf8")
-      );
-    }
-
-    orders.unshift(order);
-
-    fs.writeFileSync(
-      "orders.json",
-      JSON.stringify(orders, null, 2)
-    );
-
-    const productsText = order.items
-      .map(item =>
-        `${item.name} | Qty: ${item.qty} | ₹${item.price}`
-      )
-      .join("\n");
-
-    const emailText = `
-🛒 NEW ORDER RECEIVED
-
-Order ID: ${order.id}
---------------------------------
-CUSTOMER DETAILS-
-
-Name: ${order.user.name}
-Phone: ${order.user.phone}
-Address: ${order.user.address}
---------------------------------
-PRODUCTS->
-${productsText}
---------------------------------
-TOTAL = ₹${order.total}
-`;
-
-    await transporter.sendMail({
-      from: `"Komal Chand Store Website" <${process.env.EMAIL_USER}>`,
-      to: process.env.SHOP_EMAIL,
-      subject: `🛒 New Order #${order.id}`,
-      text: emailText
-    });
-
-    res.json({
-      success: true
-    });
-
-  } catch (err) {
-
-    console.error(err);
-
-    res.status(500).json({
+  if (error) {
+    return res.status(500).json({
       success: false,
-      error: err.message
+      error: error.message
     });
-
   }
+
+  res.status(200).json({
+    success: true,
+    message: "Supabase Connected Successfully ✅"
+  });
 
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(
-    `Server running on port ${process.env.PORT || 3000}`
-  );
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+
+    console.clear();
+    logger.success("Backend Server Started");
+    console.log("");
+    logger.info(`Backend : http://localhost:${PORT}`);
+    logger.info("Frontend : http://127.0.0.1:5500/first.html");
+    console.log("");
+
 });
